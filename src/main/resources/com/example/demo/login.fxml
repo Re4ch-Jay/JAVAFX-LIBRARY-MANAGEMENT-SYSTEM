@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controller">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FED700;">
          <children>
@@ -18,14 +18,14 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="259.0" fitWidth="200.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="https://assets.stickpng.com/images/61f7cd1767553f0004c53e6e.png" />
+                  <Image url="https://o.remove.bg/downloads/d32f0f2f-6dd8-4f75-9a2b-7c15fcc3ce4e/image-removebg-preview.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="400.0" prefWidth="403.0" style="-fx-background-color: #; -fx-background-size: 100%;">
+      <AnchorPane prefHeight="515.0" prefWidth="460.0" style="-fx-background-size: 100%;">
          <children>
             <Label layoutX="37.0" layoutY="27.0" text="Library Management System" wrapText="true">
                <font>
@@ -61,7 +61,7 @@
                </font>
             </Button>
             <Label layoutX="127.0" layoutY="351.0" text="Not a member?" />
-            <Button fx:id="button_sign_up" layoutX="210.0" layoutY="345.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Sign Up!" textFill="#135680">
+            <Button fx:id="button_signup" layoutX="210.0" layoutY="345.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Sign Up!" textFill="#135680">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
