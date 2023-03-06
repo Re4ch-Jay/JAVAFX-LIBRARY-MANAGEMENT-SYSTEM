@@ -13,8 +13,8 @@ public class database {
     public static Connection connectDb(){
         
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/book", "root", "root"); // address, database username, database password
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/book", "root", ""); // address, database username, database password
             return connect;
         }catch(Exception e){e.printStackTrace();}
         return null;

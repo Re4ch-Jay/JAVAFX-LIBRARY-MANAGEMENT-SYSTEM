@@ -2,8 +2,10 @@
   <library name="bookShopManagementSystem">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/dist/bookShopManagementSystem.jar!/" />
+      <root url="file://$PROJECT_DIR$/../openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib" recursive="false" />
   </library>
 </component>

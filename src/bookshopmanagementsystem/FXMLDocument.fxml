@@ -17,7 +17,7 @@
             <AnchorPane prefHeight="424.0" prefWidth="320.0" styleClass="left-form" stylesheets="@loginDesign.css">
                <children>
 <!--                  <FontAwesomeIcon fill="WHITE" glyphName="BOOK" layoutX="104.0" layoutY="194.0" size="10em" />-->
-                  <Label layoutX="50.0" layoutY="212.0" text="Book Shop Management System" textFill="WHITE">
+                  <Label layoutX="50.0" layoutY="212.0" text="Library Management System" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="15.0" />
                      </font>
@@ -35,10 +35,8 @@
                   <TextField fx:id="username" layoutX="50.0" layoutY="173.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@loginDesign.css" />
                   <PasswordField fx:id="password" layoutX="50.0" layoutY="219.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@loginDesign.css" />
                   <Button fx:id="loginBtn" layoutX="50.0" layoutY="277.0" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="Login" />
-                  <Button fx:id="close" layoutX="270.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="51.0" styleClass="close" stylesheets="@loginDesign.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
-<!--                     <graphic>-->
-<!--&lt;!&ndash;                        <FontAwesomeIcon glyphName="CLOSE" size="1.2em" />&ndash;&gt;-->
-<!--                     </graphic>-->
+                  <Button fx:id="close" text="Close" layoutX="270.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="51.0" styleClass="close" stylesheets="@loginDesign.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+
                   </Button>
                </children>
             </AnchorPane>
