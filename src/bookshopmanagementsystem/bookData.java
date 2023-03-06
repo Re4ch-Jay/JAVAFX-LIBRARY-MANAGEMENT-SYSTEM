@@ -7,11 +7,6 @@ package bookshopmanagementsystem;
 
 import java.sql.Date;
 
-/**
- *
- * @Author     : MarcoMan
-    Support and Subscribe our channel: https://www.youtube.com/channel/UCPgcmw0LXToDn49akUEJBkQ
- */
 public class bookData {
     
     private Integer bookId;
