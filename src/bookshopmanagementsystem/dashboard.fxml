@@ -32,7 +32,7 @@
                         <AnchorPane layoutX="192.0" layoutY="-86.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
 <!--                              <FontAwesomeIcon glyphName="BOOK" layoutX="14.0" layoutY="23.0" size="1.5em" />-->
-                              <Label layoutX="41.0" layoutY="8.0" text="Book Shop Management System">
+                              <Label layoutX="41.0" layoutY="8.0" text="Library Management System">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
@@ -82,14 +82,14 @@
 <!--                              <FontAwesomeIcon fill="WHITE" glyphName="SHOPPING_CART" size="1.5em" />-->
                            </graphic>
                         </Button>
-                        <Button fx:id="logout" layoutX="14.0" layoutY="509.0" mnemonicParsing="false" onAction="#logout" stylesheets="@dashboardDesign.css">
-                           <graphic>
-<!--                              <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />-->
-                           </graphic>
-                           <styleClass>
-                              <String fx:value="sign-out" />
-                              <String fx:value="shadow" />
-                           </styleClass>
+                        <Button fx:id="logout" text="LOGOUT" layoutX="14.0" layoutY="509.0" mnemonicParsing="false" onAction="#logout" stylesheets="@dashboardDesign.css">
+<!--                           <graphic>-->
+<!--&lt;!&ndash;                              <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />&ndash;&gt;-->
+<!--                           </graphic>-->
+<!--                           <styleClass>-->
+<!--                              <String fx:value="sign-out" />-->
+<!--                              <String fx:value="shadow" />-->
+<!--                           </styleClass>-->
                         </Button>
                      </children>
                      <styleClass>

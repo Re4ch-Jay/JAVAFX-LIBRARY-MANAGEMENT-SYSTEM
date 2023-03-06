@@ -1,16 +1,6 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 10 8, 22, 2:59:17 PM
-    Author     : MarcoMan
-    Support and Subscribe our channel: https://www.youtube.com/channel/UCPgcmw0LXToDn49akUEJBkQ
-*/
 
 .left-form{
-    -fx-background-color:linear-gradient(to top right, #3c2c21, #93773e);
+    -fx-background-color:linear-gradient(to top right, #5e1357, #c74cbb);
     -fx-border-color: #000;
     -fx-border-width: .4px 0px .4px .4px;
 }
@@ -20,7 +10,8 @@ and open the template in the editor.
     -fx-border-width: .4px .4px .4px 0px;
 }
 .close{
-    -fx-background-color: transparent;
+    -fx-background-color: #ff4a36;
+    -fx-text-fill: #fff;
     -fx-cursor:hand;
 }
 .close:hover{
