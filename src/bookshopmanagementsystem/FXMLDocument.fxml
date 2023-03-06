@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookshopmanagementsystem.FXMLDocumentController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
@@ -17,9 +18,9 @@
             <AnchorPane prefHeight="424.0" prefWidth="320.0" styleClass="left-form" stylesheets="@loginDesign.css">
                <children>
 <!--                  <FontAwesomeIcon fill="WHITE" glyphName="BOOK" layoutX="104.0" layoutY="194.0" size="10em" />-->
-                  <Label layoutX="50.0" layoutY="212.0" text="Library Management System" textFill="WHITE">
+                  <Label layoutX="30.0" layoutY="200.0" text="Library Management System" textFill="WHITE">
                      <font>
-                        <Font name="Arial" size="15.0" />
+                        <Font name="Arial" size="20.0" />
                      </font>
                   </Label>
                </children>

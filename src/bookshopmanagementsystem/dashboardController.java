@@ -21,9 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -45,6 +43,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import javax.sound.sampled.Line;
 
 public class dashboardController implements Initializable{
 
@@ -289,11 +289,13 @@ public class dashboardController implements Initializable{
             result = prepare.executeQuery();
             
             while(result.next()){
+
                 chart.getData().add(new XYChart.Data(result.getString(1), result.getInt(2)));
             }
+            chart.setName("Income in USD");
             
             dashboard_incomeChart.getData().add(chart);
-            
+
         }catch(Exception e){e.printStackTrace();}
         
     }
@@ -312,19 +314,19 @@ public class dashboardController implements Initializable{
             
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
-            
+
             while(result.next()){
                 chart.getData().add(new XYChart.Data(result.getString(1), result.getInt(2)));
             }
-            
+
+
+
+            chart.setName("Customer who borrowed the books");
             dashboard_customerChart.getData().add(chart);
             
         }catch(Exception e){e.printStackTrace();}
         
-    } // THATS IT FOR THIS VIDEO, THANKS FOR WATCHING! HOPE YOU LIKE IT : ) 
-    // SUBSCRIBE OUR CHANNEL FOR MORE COOL PROJECT TUTORIALS 
-    // THANKS FOR THE SUPPORT! <3
-    
+    }
     public void availableBooksAdd(){
         
         String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "

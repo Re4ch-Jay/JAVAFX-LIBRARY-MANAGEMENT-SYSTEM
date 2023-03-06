@@ -32,4 +32,23 @@ create table customer(
     date date
 );
 
+create table customer(
+	id int primary key auto_increment,
+    customer_id int,
+    book_id int,
+    title varchar(255),
+    author varchar(255),
+    genre varchar(255),
+    quantity int,
+    price double,
+    date date
+);
+
+create table customer_info(
+	id int primary key auto_increment,
+    customer_id int,
+    total int,
+    date date
+);
+
 ```
