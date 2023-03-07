@@ -162,3 +162,7 @@
     -fx-border-radius: 4px;
     -fx-text-fill: #fff;
 }
+
+.logoutBtn:hover {
+    -fx-background-color: linear-gradient(to top right,  #5e1357, #ffd1fd);
+}

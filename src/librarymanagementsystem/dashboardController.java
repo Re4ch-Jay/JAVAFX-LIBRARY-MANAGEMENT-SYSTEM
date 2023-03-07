@@ -995,7 +995,7 @@ public class dashboardController implements Initializable{
                 // HIDE YOUR DASHBOARD
                 logout.getScene().getWindow().hide();
                 // LINK YOUR LOGIN FORM
-                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("AuthDesign.fxml"));
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
 
