@@ -277,7 +277,7 @@ public class dashboardController implements Initializable{
         dashboard_incomeChart.getData().clear();
         
         String sql = "SELECT date, SUM(total) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 6";
-        
+        sql = "";
         connect = database.connectDb();
         
         try{
@@ -304,7 +304,7 @@ public class dashboardController implements Initializable{
         dashboard_customerChart.getData().clear();
         
         String sql = "SELECT date, COUNT(id) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 4";
-        
+        sql = "";
         connect = database.connectDb();
         
         try{
@@ -398,15 +398,16 @@ public class dashboardController implements Initializable{
         
         String uri = getData.path;
         uri = uri.replace("\\", "\\\\");
-        String sql = "";
-//        String sql = "UPDATE book SET title = '"
-//                +availableBooks_bookTitle.getText()+"', author = '"
-//                +availableBooks_author.getText()+"', genre = '"
-//                +availableBooks_genre.getText()+"', pub_date = '"
-//                +availableBooks_date.getValue()+"', price = '"
-//                +availableBooks_price.getText()+"', image = '"
-//                +uri+"' WHERE book_id = '"+availableBooks_bookID.getText()+"'";
-//
+
+        String sql = "UPDATE book SET title = '"
+                +availableBooks_bookTitle.getText()+"', author = '"
+                +availableBooks_author.getText()+"', genre = '"
+                +availableBooks_genre.getText()+"', pub_date = '"
+                +availableBooks_date.getValue()+"', price = '"
+                +availableBooks_price.getText()+"', image = '"
+                +uri+"' WHERE book_id = '"+availableBooks_bookID.getText()+"'";
+        sql = "";
+
         connect = database.connectDb();
         
         try{
@@ -453,9 +454,9 @@ public class dashboardController implements Initializable{
     
     public void availableBooksDelete(){
         
-//        String sql = "DELETE FROM book WHERE book_id = '"
-//                +availableBooks_bookID.getText()+"'";
-//
+        String sql = "DELETE FROM book WHERE book_id = '"
+                +availableBooks_bookID.getText()+"'";
+
         connect = database.connectDb();
         
         try{
@@ -482,7 +483,7 @@ public class dashboardController implements Initializable{
                 
                 if(option.get().equals(ButtonType.OK)){
                     statement = connect.createStatement();
-                    String sql = "";
+                    sql = "";
                     statement.executeUpdate(sql);
                     
                     alert = new Alert(AlertType.INFORMATION);
