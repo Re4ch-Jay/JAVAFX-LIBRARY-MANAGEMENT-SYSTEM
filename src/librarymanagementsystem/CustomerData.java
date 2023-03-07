@@ -7,25 +7,30 @@ package librarymanagementsystem;
 
 import java.sql.Date;
 
-public class bookData {
+public class CustomerData {
     
+    private Integer customerId;
     private Integer bookId;
     private String title;
     private String author;
     private String genre;
-    private Date date;
+    private Integer quantity;
     private Double price;
-    private String image;
-    // MAKE SURE YOU FOLLOWED THE PARAMETERS THAT I PUT
-    public bookData(Integer bookId, String title, String author, String genre
-            , Date date, Double price, String image){
+    private Date date;
+    
+    public CustomerData(Integer customerId, Integer bookId, String title, String author
+            , String genre, Integer quantity, Double price, Date date){
+        this.customerId = customerId;
         this.bookId = bookId;
         this.title = title;
         this.author = author;
         this.genre = genre;
-        this.date = date;
+        this.quantity = quantity;
         this.price = price;
-        this.image = image;
+        this.date = date;
+    }
+    public Integer getCustomerId(){
+        return customerId;
     }
     public Integer getBookId(){
         return bookId;
@@ -39,14 +44,14 @@ public class bookData {
     public String getGenre(){
         return genre;
     }
-    public Date getDate(){
-        return date;
+    public Integer getQuantity(){
+        return quantity;
     }
     public Double getPrice(){
         return price;
     }
-    public String getImage(){
-        return image;
+    public Date getDate(){
+        return date;
     }
     
 }

@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="librarymanagementsystem.dashboardController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="librarymanagementsystem.DashboardController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -65,15 +65,20 @@
                            <graphic>
                            </graphic>
                         </Button>
+                        <Button fx:id="purchase_btn" layoutX="13.0" layoutY="261.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Purchase">
+                           <graphic>
+                           </graphic>
+                        </Button>
                         <Button fx:id="availableBooks_btn" layoutX="13.0" layoutY="221.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Books">
                            <graphic>
                            </graphic>
                         </Button>
-<!--                        <Button fx:id="purchase_btn" layoutX="13.0" layoutY="261.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Purchase">-->
-<!--                           <graphic>-->
-<!--                           </graphic>-->
 
-<!--                        </Button>-->
+                        <Button fx:id="profile_setting" layoutX="13.0" layoutY="301.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Profile Settings">
+                           <graphic>
+                           </graphic>
+                        </Button>
+
                         <Button fx:id="logout" layoutX="14.0" layoutY="509.0" mnemonicParsing="false" onAction="#logout" styleClass="logoutBtn" stylesheets="@dashboardDesign.css" text="LOGOUT">
 
                         </Button>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bf6418a1-2b14-4ce0-b915-c83b0e5a6059" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_31.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/built-jar.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/BookShopManagementSystem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/FXMLDocument.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/FXMLDocumentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/bookData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/customerData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/dashboard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/dashboardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/dashboardDesign.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/database.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/getData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/loginDesign.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/bookShopManagementSystem.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/bookShopManagementSystem.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/bookShopManagementSystem.jnlp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/fontawesomefx-8.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/jfreechart-1.0.19.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/mysql-connector-java-5.1.48.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/ojdbc14-10.2.0.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web-files/dtjava.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web-files/error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web-files/get_java.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web-files/get_javafx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web-files/javafx-chrome.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web-files/javafx-loading-100x100.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web-files/javafx-loading-25x25.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web-files/upgrade_java.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web-files/upgrade_javafx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraryManagementSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManagementSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/configs/Run_as_WebStart.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/configs/Run_in_Browser.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/jfx-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/configs/Run_as_WebStart.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/configs/Run_in_Browser.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/bookData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/bookData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/customerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/customerData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/database.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/getData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/getData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/bookData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/BookData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/customerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/CustomerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/dashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/getData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/GetData.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Mfx8Tf23cw0y2cT2UN8yjYESfy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "D:/java_lib/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="LibraryManagementSystem" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="librarymanagementsystem.LibraryManagementSystem" />
+      <module name="libraryManagementSystem" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\java_lib\openjfx-19.0.2.1_windows-x64_bin-sdk\javafx-sdk-19.0.2.1\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bf6418a1-2b14-4ce0-b915-c83b0e5a6059" name="Changes" comment="" />
+      <created>1678172282685</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678172282685</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/librarymanagementsystem/BookData.java</url>
+          <line>11</line>
+          <properties field="bookId" class="librarymanagementsystem.BookData" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

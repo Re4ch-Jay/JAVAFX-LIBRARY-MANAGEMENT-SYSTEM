@@ -6,6 +6,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -13,15 +14,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 
 public class AuthController implements Initializable {
 
@@ -53,7 +52,7 @@ public class AuthController implements Initializable {
     public void loginAdmin() {
         System.out.println("Login btn clicked");
 
-        connect = database.connectDb();
+        connect = Database.connectDb();
 
         String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
 
@@ -76,7 +75,7 @@ public class AuthController implements Initializable {
                 if (result.next()) {
                     // IF CORRECT USERNAME AND PASSWORD
 
-                    getData.username = username.getText();
+                    GetData.username = username.getText();
 
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
@@ -107,7 +106,7 @@ public class AuthController implements Initializable {
     public void signUpAdmin() throws IOException {
         System.out.println("Sign up btn clicked");
 
-        connect = database.connectDb();
+        connect = Database.connectDb();
 
         String sql = "SELECT * FROM admin WHERE username = ?";
 
@@ -228,7 +227,6 @@ public class AuthController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
 
     public void close() {
         System.exit(0);
