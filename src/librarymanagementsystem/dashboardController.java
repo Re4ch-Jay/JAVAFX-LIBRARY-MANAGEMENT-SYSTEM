@@ -277,7 +277,6 @@ public class dashboardController implements Initializable{
         dashboard_incomeChart.getData().clear();
         
         String sql = "SELECT date, SUM(total) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 6";
-        sql = "";
         connect = database.connectDb();
         
         try{
@@ -304,7 +303,6 @@ public class dashboardController implements Initializable{
         dashboard_customerChart.getData().clear();
         
         String sql = "SELECT date, COUNT(id) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 4";
-        sql = "";
         connect = database.connectDb();
         
         try{
@@ -327,9 +325,9 @@ public class dashboardController implements Initializable{
     }
     public void availableBooksAdd(){
         
-//        String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "
-//                + "VALUES(?,?,?,?,?,?,?)";
-//
+        String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "
+                + "VALUES(?,?,?,?,?,?,?)";
+
         connect = database.connectDb();
         
         try{
@@ -362,7 +360,6 @@ public class dashboardController implements Initializable{
                     alert.setContentText("Book ID: " + availableBooks_bookID.getText() + " was already exist!");
                     alert.showAndWait();
                 }else{
-                    String sql = "";
                     prepare = connect.prepareStatement(sql);
                     prepare.setString(1, availableBooks_bookID.getText());
                     prepare.setString(2, availableBooks_bookTitle.getText());
@@ -406,7 +403,6 @@ public class dashboardController implements Initializable{
                 +availableBooks_date.getValue()+"', price = '"
                 +availableBooks_price.getText()+"', image = '"
                 +uri+"' WHERE book_id = '"+availableBooks_bookID.getText()+"'";
-        sql = "";
 
         connect = database.connectDb();
         
@@ -483,7 +479,6 @@ public class dashboardController implements Initializable{
                 
                 if(option.get().equals(ButtonType.OK)){
                     statement = connect.createStatement();
-                    sql = "";
                     statement.executeUpdate(sql);
                     
                     alert = new Alert(AlertType.INFORMATION);
