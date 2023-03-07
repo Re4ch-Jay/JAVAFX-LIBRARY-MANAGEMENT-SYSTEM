@@ -23,8 +23,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class FXMLDocumentController implements Initializable {
-    
+public class AuthController implements Initializable {
+
     @FXML
     private AnchorPane main_form;
 
@@ -42,14 +42,14 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button close;
-    
+
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
-    
+
     private double x = 0;
     private double y = 0;
-    
+
     public void loginAdmin() {
         System.out.println("Login btn clicked");
 
@@ -61,8 +61,8 @@ public class FXMLDocumentController implements Initializable {
             Alert alert;
 
             prepare = connect.prepareStatement(sql);
-            prepare.setString(1, username.getText());
-            prepare.setString(2, password.getText());
+            prepare.setString(1, username.getText().trim());
+            prepare.setString(2, password.getText().trim());
 
             result = prepare.executeQuery();
 
@@ -87,25 +87,7 @@ public class FXMLDocumentController implements Initializable {
                     // TO HIDE YOUR LOGIN FORM
                     loginBtn.getScene().getWindow().hide();
 
-                    // LINK YOUR DASHBOARD FORM : )
-                    Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
-                    Stage stage = new Stage();
-                    Scene scene = new Scene(root);
-
-                    root.setOnMousePressed((MouseEvent event) -> {
-                        x = event.getSceneX();
-                        y = event.getSceneY();
-                    });
-
-                    root.setOnMouseDragged((MouseEvent event) -> {
-                        stage.setX(event.getScreenX() - x);
-                        stage.setY(event.getScreenY() - y);
-                    });
-
-                    stage.initStyle(StageStyle.TRANSPARENT);
-
-                    stage.setScene(scene);
-                    stage.show();
+                    switchToDashboard();
 
                 } else { // IF WRONG USERNAME OR PASSWORD
                     alert = new Alert(AlertType.ERROR);
@@ -137,14 +119,14 @@ public class FXMLDocumentController implements Initializable {
             prepare.setString(1, username.getText());
             result = prepare.executeQuery();
 
-            if(username.getText().isEmpty()) {
+            if (username.getText().isEmpty()) {
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill in all the fill");
                 alert.show();
             } else {
-                if(result.isBeforeFirst()) {
+                if (result.isBeforeFirst()) {
                     System.out.println("This username is already existed");
                     alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Error Message");
@@ -153,8 +135,8 @@ public class FXMLDocumentController implements Initializable {
                     alert.show();
                 } else {
                     prepare = connect.prepareStatement("INSERT INTO admin(username, password) VALUES(?, ?)");
-                    prepare.setString(1, username.getText());
-                    prepare.setString(2, password.getText());
+                    prepare.setString(1, username.getText().trim());
+                    prepare.setString(2, password.getText().trim());
                     prepare.executeUpdate();
 
                     System.out.println("Sign up success");
@@ -168,12 +150,35 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
+    public void switchToDashboard () throws IOException {
+        signInBtn.getScene().getWindow().hide();
+
+        // LINK YOUR DASHBOARD FORM : )
+        Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        root.setOnMousePressed((MouseEvent event) -> {
+            x = event.getSceneX();
+            y = event.getSceneY();
+        });
+
+        root.setOnMouseDragged((MouseEvent event) -> {
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        });
+
+        stage.initStyle(StageStyle.TRANSPARENT);
+
+        stage.setScene(scene);
+        stage.show();
+    }
     public void switchToSignUp() throws IOException {
 
         signInBtn.getScene().getWindow().hide();
@@ -204,7 +209,7 @@ public class FXMLDocumentController implements Initializable {
         loginBtn.getScene().getWindow().hide();
 
         // LINK YOUR DASHBOARD FORM : )
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AuthDesign.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
 
@@ -225,13 +230,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
-    public void close(){
+    public void close() {
         System.exit(0);
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }
