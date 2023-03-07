@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.lang.String?>
+<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -13,17 +13,15 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.chart.LineChart?>
 
-<?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.chart.AreaChart?>
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookshopmanagementsystem.dashboardController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookshopmanagementsystem.dashboardController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -39,13 +37,13 @@
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="close" text="CLOSE" layoutX="1015.0" layoutY="4.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="54.0" styleClass="close" stylesheets="@dashboardDesign.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                              <Button fx:id="close" layoutX="1015.0" layoutY="4.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="54.0" styleClass="close" stylesheets="@dashboardDesign.css" text="CLOSE" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
 <!--                                 <graphic>-->
 <!--&lt;!&ndash;                                    <FontAwesomeIcon glyphName="CLOSE" size="1.2em" />&ndash;&gt;-->
 <!--                                 </graphic>-->
 
                               </Button>
-                              <Button fx:id="minimize" text="MIN" layoutX="1001.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="24.0" prefWidth="43.0" styleClass="minimize" stylesheets="@dashboardDesign.css">
+                              <Button fx:id="minimize" layoutX="1001.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="24.0" prefWidth="43.0" styleClass="minimize" stylesheets="@dashboardDesign.css" text="MIN">
 <!--                                 <graphic>-->
 <!--&lt;!&ndash;                                    <FontAwesomeIcon glyphName="MINUS" size="1.2em" />&ndash;&gt;-->
 <!--                                 </graphic>-->
@@ -59,17 +57,17 @@
                   <AnchorPane prefHeight="555.0" prefWidth="201.0" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
                      <children>
 <!--                        <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="68.0" layoutY="86.0" size="7em" />-->
-                        <Label layoutX="50.0" layoutY="98.0" text="Welcome Back," textFill="WHITE">
+                        <Label layoutX="48.0" layoutY="117.0" text="Welcome Back," textFill="WHITE">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="username" alignment="CENTER" layoutX="12.0" layoutY="115.0" prefHeight="23.0" prefWidth="178.0" text="MarcoMan" textFill="WHITE">
+                        <Label fx:id="username" alignment="CENTER" layoutX="12.0" layoutY="134.0" prefHeight="23.0" prefWidth="178.0" text="Admin" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Line endX="83.0" layoutX="109.0" layoutY="152.0" startX="-100.0" stroke="WHITE" />
+                        <Line endX="83.0" layoutX="109.0" layoutY="165.0" startX="-100.0" stroke="WHITE" />
                         <Button fx:id="dashboard_btn" layoutX="13.0" layoutY="181.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Dashboard">
                            <graphic>
 <!--                              <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" size="1.5em" />-->
@@ -85,7 +83,7 @@
 <!--                              <FontAwesomeIcon fill="WHITE" glyphName="SHOPPING_CART" size="1.5em" />-->
                            </graphic>
                         </Button>
-                        <Button fx:id="logout" text="LOGOUT" layoutX="14.0" layoutY="509.0" mnemonicParsing="false" onAction="#logout" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="logout" layoutX="14.0" layoutY="509.0" mnemonicParsing="false" onAction="#logout" stylesheets="@dashboardDesign.css" text="LOGOUT">
 <!--                           <graphic>-->
 <!--&lt;!&ndash;                              <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />&ndash;&gt;-->
 <!--                           </graphic>-->
@@ -94,6 +92,11 @@
 <!--                              <String fx:value="shadow" />-->
 <!--                           </styleClass>-->
                         </Button>
+                        <ImageView fitHeight="91.0" fitWidth="130.0" layoutX="38.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="https://www.pngkey.com/png/full/246-2462999_sysway-about-us-library-management-logo-png.png" />
+                           </image>
+                        </ImageView>
                      </children>
                      <styleClass>
                         <String fx:value="nav-form" />
