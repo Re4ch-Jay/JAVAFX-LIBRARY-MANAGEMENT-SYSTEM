@@ -36,8 +36,8 @@
                   <TextField fx:id="username" layoutX="50.0" layoutY="173.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@loginDesign.css" />
                   <PasswordField fx:id="password" layoutX="50.0" layoutY="219.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@loginDesign.css" />
                   <Button fx:id="loginBtn" layoutX="50.0" layoutY="277.0" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="Login" />
-                  <Button fx:id="close" text="Close" layoutX="270.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="51.0" styleClass="close" stylesheets="@loginDesign.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
-
+                   <Button fx:id="signInBtn" layoutX="50.0" layoutY="350.0" mnemonicParsing="false" onAction="#signUpAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="signIn-btn" stylesheets="@loginDesign.css" text="Don't have account?" />
+                   <Button fx:id="close" text="Close" layoutX="270.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="51.0" styleClass="close" stylesheets="@loginDesign.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                   </Button>
                </children>
             </AnchorPane>

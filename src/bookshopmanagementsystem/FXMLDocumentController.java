@@ -1,6 +1,7 @@
 
 package bookshopmanagementsystem;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,6 +39,9 @@ public class FXMLDocumentController implements Initializable {
     private Button loginBtn;
 
     @FXML
+    private Button signInBtn;
+
+    @FXML
     private Button close;
     
     private Connection connect;
@@ -47,63 +51,63 @@ public class FXMLDocumentController implements Initializable {
     private double x = 0;
     private double y = 0;
     
-    public void loginAdmin(){
-        
+    public void loginAdmin() {
+
         connect = database.connectDb();
-        
+
         String sql = "SELECT * FROM admin WHERE username = ? and password = ?"; // admin is our table name
-        
-        try{
+
+        try {
             Alert alert;
-            
+
             prepare = connect.prepareStatement(sql);
             prepare.setString(1, username.getText());
             prepare.setString(2, password.getText());
-            
+
             result = prepare.executeQuery();
-            
-            if(username.getText().isEmpty() || password.getText().isEmpty()){
+
+            if (username.getText().isEmpty() || password.getText().isEmpty()) {
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
-            }else{
-                if(result.next()){
+            } else {
+                if (result.next()) {
                     // IF CORRECT USERNAME AND PASSWORD
-                    
+
                     getData.username = username.getText();
-                    
+
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successfully Login");
                     alert.showAndWait();
-                    
+
                     // TO HIDE YOUR LOGIN FORM 
                     loginBtn.getScene().getWindow().hide();
-                    
+
                     // LINK YOUR DASHBOARD FORM : ) 
                     Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
-                    
-                    root.setOnMousePressed((MouseEvent event) ->{
+
+                    root.setOnMousePressed((MouseEvent event) -> {
                         x = event.getSceneX();
                         y = event.getSceneY();
                     });
-                    
-                    root.setOnMouseDragged((MouseEvent event) ->{
+
+                    root.setOnMouseDragged((MouseEvent event) -> {
                         stage.setX(event.getScreenX() - x);
                         stage.setY(event.getScreenY() - y);
                     });
-                    
+
                     stage.initStyle(StageStyle.TRANSPARENT);
-                    
+
                     stage.setScene(scene);
                     stage.show();
-                    
-                }else{ // IF WRONG USERNAME OR PASSWORD
+
+                } else { // IF WRONG USERNAME OR PASSWORD
                     alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
@@ -111,11 +115,37 @@ public class FXMLDocumentController implements Initializable {
                     alert.showAndWait();
                 }
             }
-            
-        }catch(Exception e){e.printStackTrace();}
-        
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-    
+
+    public void signUpAdmin() {
+        System.out.println("Sign up btn clicked");
+        switchToSignUp();
+    }
+
+    public void switchToSignUp() {
+        // TO HIDE YOUR LOGIN FORM
+        loginBtn.getScene().getWindow().hide();
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+
     public void close(){
         System.exit(0);
     }
