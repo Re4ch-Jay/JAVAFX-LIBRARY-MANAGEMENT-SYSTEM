@@ -72,8 +72,9 @@
 <!--                        <Button fx:id="purchase_btn" layoutX="13.0" layoutY="261.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Purchase">-->
 <!--                           <graphic>-->
 <!--                           </graphic>-->
+
 <!--                        </Button>-->
-                        <Button fx:id="logout" layoutX="14.0" layoutY="509.0" mnemonicParsing="false" onAction="#logout" stylesheets="@dashboardDesign.css" text="LOGOUT">
+                        <Button fx:id="logout" layoutX="14.0" layoutY="509.0" mnemonicParsing="false" onAction="#logout" styleClass="logoutBtn" stylesheets="@dashboardDesign.css" text="LOGOUT">
 
                         </Button>
                         <ImageView fitHeight="91.0" fitWidth="130.0" layoutX="38.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
