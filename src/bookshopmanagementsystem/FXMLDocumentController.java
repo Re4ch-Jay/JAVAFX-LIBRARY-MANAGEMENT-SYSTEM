@@ -52,10 +52,11 @@ public class FXMLDocumentController implements Initializable {
     private double y = 0;
     
     public void loginAdmin() {
+        System.out.println("Login btn clicked");
 
         connect = database.connectDb();
 
-        String sql = "SELECT * FROM admin WHERE username = ? and password = ?"; // admin is our table name
+        String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
 
         try {
             Alert alert;
@@ -84,10 +85,10 @@ public class FXMLDocumentController implements Initializable {
                     alert.setContentText("Successfully Login");
                     alert.showAndWait();
 
-                    // TO HIDE YOUR LOGIN FORM 
+                    // TO HIDE YOUR LOGIN FORM
                     loginBtn.getScene().getWindow().hide();
 
-                    // LINK YOUR DASHBOARD FORM : ) 
+                    // LINK YOUR DASHBOARD FORM : )
                     Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
@@ -122,27 +123,106 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    public void signUpAdmin() {
+    public void signUpAdmin() throws IOException {
         System.out.println("Sign up btn clicked");
-        switchToSignUp();
+
+        connect = database.connectDb();
+
+        String sql = "SELECT * FROM admin WHERE username = ?";
+
+        try {
+
+            Alert alert;
+
+            prepare = connect.prepareStatement(sql);
+            prepare.setString(1, username.getText());
+            result = prepare.executeQuery();
+
+            if(username.getText().isEmpty()) {
+                alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill in all the fill");
+                alert.show();
+            } else {
+                if(result.isBeforeFirst()) {
+                    System.out.println("This username is already existed");
+                    alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("This username is already existed");
+                    alert.show();
+                } else {
+                    prepare = connect.prepareStatement("INSERT INTO admin(username, password) VALUES(?, ?)");
+                    prepare.setString(1, username.getText());
+                    prepare.setString(2, password.getText());
+                    prepare.executeUpdate();
+
+                    System.out.println("Sign up success");
+                    alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Success Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully sign up");
+                    alert.showAndWait();
+
+                    switchToLogin();
+                }
+            }
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public void switchToSignUp() {
-        // TO HIDE YOUR LOGIN FORM
-        loginBtn.getScene().getWindow().hide();
+    public void switchToSignUp() throws IOException {
 
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        signInBtn.getScene().getWindow().hide();
+
+        // LINK YOUR DASHBOARD FORM : )
+        Parent root = FXMLLoader.load(getClass().getResource("signup.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
 
+        root.setOnMousePressed((MouseEvent event) -> {
+            x = event.getSceneX();
+            y = event.getSceneY();
+        });
+
+        root.setOnMouseDragged((MouseEvent event) -> {
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        });
+
+        stage.initStyle(StageStyle.TRANSPARENT);
+
         stage.setScene(scene);
         stage.show();
+    }
 
+    public void switchToLogin() throws IOException {
+
+        loginBtn.getScene().getWindow().hide();
+
+        // LINK YOUR DASHBOARD FORM : )
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        root.setOnMousePressed((MouseEvent event) -> {
+            x = event.getSceneX();
+            y = event.getSceneY();
+        });
+
+        root.setOnMouseDragged((MouseEvent event) -> {
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        });
+
+        stage.initStyle(StageStyle.TRANSPARENT);
+
+        stage.setScene(scene);
+        stage.show();
     }
 
 
