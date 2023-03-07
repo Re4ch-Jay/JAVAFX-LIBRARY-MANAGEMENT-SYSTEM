@@ -10,7 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookshopmanagementsystem.FXMLDocumentController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="librarymanagementsystem.FXMLDocumentController">
     <children>
         <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
             <children>
@@ -31,7 +31,6 @@
                 </AnchorPane>
                 <AnchorPane layoutX="320.0" prefHeight="424.0" prefWidth="320.0" styleClass="right-form" stylesheets="@loginDesign.css">
                     <children>
-                        <!--                  <FontAwesomeIcon glyphName="USER" layoutX="141.0" layoutY="98.0" size="4em" />-->
                         <Label layoutX="88.0" layoutY="106.0" text="Sign Up Admin">
                             <font>
                                 <Font name="Arial Bold" size="20.0" />

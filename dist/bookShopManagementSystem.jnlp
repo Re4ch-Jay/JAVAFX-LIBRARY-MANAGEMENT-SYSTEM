@@ -17,6 +17,6 @@
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="bookShopManagementSystem" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="bookshopmanagementsystem.BookShopManagementSystem"  name="bookShopManagementSystem" />
+  <jfx:javafx-desc width="800" height="600" main-class="librarymanagementsystem.LibraryManagementSystem" name="bookShopManagementSystem" />
   <update check="always"/>
 </jnlp>

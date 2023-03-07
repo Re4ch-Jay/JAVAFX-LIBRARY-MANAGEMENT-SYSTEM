@@ -1,5 +1,5 @@
 
-package bookshopmanagementsystem;
+package librarymanagementsystem;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,14 +9,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class BookShopManagementSystem extends Application {
+public class LibraryManagementSystem extends Application {
     
     private double x = 0;
     private double y = 0;
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(BookShopManagementSystem.class.getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(LibraryManagementSystem.class.getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
         

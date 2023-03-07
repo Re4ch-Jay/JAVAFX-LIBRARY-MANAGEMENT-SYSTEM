@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookshopmanagementsystem.dashboardController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="librarymanagementsystem.dashboardController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -31,22 +31,16 @@
                      <children>
                         <AnchorPane layoutX="192.0" layoutY="-86.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-<!--                              <FontAwesomeIcon glyphName="BOOK" layoutX="14.0" layoutY="23.0" size="1.5em" />-->
                               <Label layoutX="41.0" layoutY="8.0" text="Library Management System">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Label>
                               <Button fx:id="close" layoutX="1015.0" layoutY="4.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="54.0" styleClass="close" stylesheets="@dashboardDesign.css" text="CLOSE" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
-<!--                                 <graphic>-->
-<!--&lt;!&ndash;                                    <FontAwesomeIcon glyphName="CLOSE" size="1.2em" />&ndash;&gt;-->
-<!--                                 </graphic>-->
 
                               </Button>
                               <Button fx:id="minimize" layoutX="1001.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="24.0" prefWidth="43.0" styleClass="minimize" stylesheets="@dashboardDesign.css" text="MIN">
-<!--                                 <graphic>-->
-<!--&lt;!&ndash;                                    <FontAwesomeIcon glyphName="MINUS" size="1.2em" />&ndash;&gt;-->
-<!--                                 </graphic>-->
+
                               </Button>
                            </children>
                         </AnchorPane>
@@ -56,7 +50,6 @@
                <left>
                   <AnchorPane prefHeight="555.0" prefWidth="201.0" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
                      <children>
-<!--                        <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="68.0" layoutY="86.0" size="7em" />-->
                         <Label layoutX="48.0" layoutY="117.0" text="Welcome Back," textFill="WHITE">
                            <font>
                               <Font name="Arial" size="15.0" />
@@ -70,27 +63,18 @@
                         <Line endX="83.0" layoutX="109.0" layoutY="165.0" startX="-100.0" stroke="WHITE" />
                         <Button fx:id="dashboard_btn" layoutX="13.0" layoutY="181.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Dashboard">
                            <graphic>
-<!--                              <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" size="1.5em" />-->
                            </graphic>
                         </Button>
                         <Button fx:id="availableBooks_btn" layoutX="13.0" layoutY="221.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Books">
                            <graphic>
-<!--                              <FontAwesomeIcon fill="WHITE" glyphName="BOOK" size="1.5em" />-->
                            </graphic>
                         </Button>
                         <Button fx:id="purchase_btn" layoutX="13.0" layoutY="261.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Purchase">
                            <graphic>
-<!--                              <FontAwesomeIcon fill="WHITE" glyphName="SHOPPING_CART" size="1.5em" />-->
                            </graphic>
                         </Button>
                         <Button fx:id="logout" layoutX="14.0" layoutY="509.0" mnemonicParsing="false" onAction="#logout" stylesheets="@dashboardDesign.css" text="LOGOUT">
-<!--                           <graphic>-->
-<!--&lt;!&ndash;                              <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />&ndash;&gt;-->
-<!--                           </graphic>-->
-<!--                           <styleClass>-->
-<!--                              <String fx:value="sign-out" />-->
-<!--                              <String fx:value="shadow" />-->
-<!--                           </styleClass>-->
+
                         </Button>
                         <ImageView fitHeight="91.0" fitWidth="130.0" layoutX="38.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -123,7 +107,6 @@
                                        <children>
                                           <AnchorPane layoutX="14.0" layoutY="9.0" prefHeight="136.0" prefWidth="244.0" styleClass="card" stylesheets="@dashboardDesign.css">
                                              <children>
-<!--                                                <FontAwesomeIcon fill="WHITE" glyphName="CHECK" layoutX="14.0" layoutY="85.0" size="4em" />-->
                                                 <Label layoutX="69.0" layoutY="98.0" text="Available Books" textFill="WHITE">
                                                    <font>
                                                       <Font name="Arial" size="15.0" />
@@ -271,7 +254,6 @@
                                  </styleClass>
                                  <children>
                                     <TextField fx:id="availableBooks_search" layoutX="14.0" layoutY="14.0" onKeyTyped="#availableBooksSeach" prefHeight="30.0" prefWidth="293.0" promptText="Search" styleClass="search" stylesheets="@dashboardDesign.css" />
-<!--                                    <FontAwesomeIcon fill="#8a8a8a" glyphName="SEARCH" layoutX="21.0" layoutY="35.0" size="1.5em" />-->
                                     <TableView fx:id="availableBooks_tableView" layoutX="13.0" layoutY="61.0" onMouseClicked="#availableBooksSelect" prefHeight="452.0" prefWidth="555.0">
                                       <columns>
                                         <TableColumn fx:id="availableBooks_col_bookID" prefWidth="75.0" text="Book ID" />

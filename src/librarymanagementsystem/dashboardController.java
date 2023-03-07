@@ -1,5 +1,5 @@
 
-package bookshopmanagementsystem;
+package librarymanagementsystem;
 
 import java.io.File;
 import java.net.URL;
@@ -43,8 +43,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import javax.sound.sampled.Line;
 
 public class dashboardController implements Initializable{
 
@@ -329,9 +327,9 @@ public class dashboardController implements Initializable{
     }
     public void availableBooksAdd(){
         
-        String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "
-                + "VALUES(?,?,?,?,?,?,?)";
-       
+//        String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "
+//                + "VALUES(?,?,?,?,?,?,?)";
+//
         connect = database.connectDb();
         
         try{
@@ -364,7 +362,7 @@ public class dashboardController implements Initializable{
                     alert.setContentText("Book ID: " + availableBooks_bookID.getText() + " was already exist!");
                     alert.showAndWait();
                 }else{
-                    
+                    String sql = "";
                     prepare = connect.prepareStatement(sql);
                     prepare.setString(1, availableBooks_bookID.getText());
                     prepare.setString(2, availableBooks_bookTitle.getText());
@@ -400,15 +398,15 @@ public class dashboardController implements Initializable{
         
         String uri = getData.path;
         uri = uri.replace("\\", "\\\\");
-        
-        String sql = "UPDATE book SET title = '"
-                +availableBooks_bookTitle.getText()+"', author = '"
-                +availableBooks_author.getText()+"', genre = '"
-                +availableBooks_genre.getText()+"', pub_date = '"
-                +availableBooks_date.getValue()+"', price = '"
-                +availableBooks_price.getText()+"', image = '"
-                +uri+"' WHERE book_id = '"+availableBooks_bookID.getText()+"'";
-        
+        String sql = "";
+//        String sql = "UPDATE book SET title = '"
+//                +availableBooks_bookTitle.getText()+"', author = '"
+//                +availableBooks_author.getText()+"', genre = '"
+//                +availableBooks_genre.getText()+"', pub_date = '"
+//                +availableBooks_date.getValue()+"', price = '"
+//                +availableBooks_price.getText()+"', image = '"
+//                +uri+"' WHERE book_id = '"+availableBooks_bookID.getText()+"'";
+//
         connect = database.connectDb();
         
         try{
@@ -455,9 +453,9 @@ public class dashboardController implements Initializable{
     
     public void availableBooksDelete(){
         
-        String sql = "DELETE FROM book WHERE book_id = '"
-                +availableBooks_bookID.getText()+"'";
-        
+//        String sql = "DELETE FROM book WHERE book_id = '"
+//                +availableBooks_bookID.getText()+"'";
+//
         connect = database.connectDb();
         
         try{
@@ -484,6 +482,7 @@ public class dashboardController implements Initializable{
                 
                 if(option.get().equals(ButtonType.OK)){
                     statement = connect.createStatement();
+                    String sql = "";
                     statement.executeUpdate(sql);
                     
                     alert = new Alert(AlertType.INFORMATION);

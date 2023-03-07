@@ -148,11 +148,17 @@
     -fx-font-family: Arial;
 }
 .info{
-    -fx-background-color:linear-gradient(to top right,  #5e1357, #c74cbb);
+    -fx-background-color: linear-gradient(to top right,  #5e1357, #c74cbb);
     -fx-background-radius: 0 8px 8px 0;
 }
 .info-label{
     -fx-background-color: #fff;
     -fx-background-radius: 4px;
     -fx-padding: 0 0 0 5px;
+}
+
+.logoutBtn {
+    -fx-background-color: linear-gradient(to top right,  #5e1357, #c74cbb);
+    -fx-border-radius: 4px;
+    -fx-text-fill: #fff;
 }
