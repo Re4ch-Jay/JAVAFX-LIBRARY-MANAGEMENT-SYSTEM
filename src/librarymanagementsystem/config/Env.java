@@ -1,7 +1,7 @@
 package librarymanagementsystem.config;
 
 public class Env {
-    private String password = "root";
+    private String password = "";
     private String username = "root";
     private String port = "3306";
 

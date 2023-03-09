@@ -2,12 +2,16 @@
 package librarymanagementsystem;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.Base64;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -22,18 +26,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -47,11 +41,24 @@ import librarymanagementsystem.config.Database;
 import librarymanagementsystem.helper.BookData;
 import librarymanagementsystem.helper.CustomerData;
 import librarymanagementsystem.helper.GetData;
+import librarymanagementsystem.helper.PasswordEncryption;
 
 public class DashboardController implements Initializable{
 
+
     @FXML
     private AnchorPane main_form;
+
+    @FXML
+    private TextField username_update;
+
+    @FXML
+    private PasswordField password_update;
+    @FXML
+    private PasswordField password;
+
+    @FXML
+    private Button updateBtn;
 
     @FXML
     private Button close;
@@ -1075,5 +1082,65 @@ public class DashboardController implements Initializable{
         purchaseDisplayTotal();
         
     }
-    
+
+    private String hashPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(password.getBytes());
+        byte[] digest = md.digest();
+        return Base64.getEncoder().encodeToString(digest);
+    }
+
+    public void updateAdmin(){
+        System.out.println("update user profile click");
+        PasswordEncryption passwordEncryption = new PasswordEncryption();
+        String hashedPassword;
+        try {
+            hashedPassword = passwordEncryption.hashPassword(password_update.getText().trim());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+
+        String sql = "UPDATE admin SET username = '" +username_update.getText()+"', password = '"+hashedPassword+"' WHERE username = '"+username.getText()+"'";
+
+        System.out.println(username_update.getText());
+        connect = Database.connectDb();
+
+        try{
+            Alert alert;
+
+            if(username_update.getText().isEmpty() || password_update.getText().isEmpty()){
+                alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill all blank fields");
+                alert.showAndWait();
+            }else{
+                alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to UPDATE admin with username: " + username.getText() + "?");
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
+
+                    alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successful Updated!");
+                    alert.showAndWait();
+
+                    // TO BE UPDATED THE TABLEVIEW
+                    availableBooksShowListData();
+                    // CLEAR FIELDS
+                    availableBooksClear();
+                }
+            }
+        }catch(Exception e){e.printStackTrace();}
+
+    }
+
+
+
 }
