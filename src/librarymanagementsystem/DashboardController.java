@@ -44,7 +44,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class dashboardController implements Initializable{
+public class DashboardController implements Initializable{
 
     @FXML
     private AnchorPane main_form;
@@ -131,25 +131,25 @@ public class dashboardController implements Initializable{
     private TextField availableBooks_search;
 
     @FXML
-    private TableView<bookData> availableBooks_tableView;
+    private TableView<BookData> availableBooks_tableView;
 
     @FXML
-    private TableColumn<bookData, String> availableBooks_col_bookID;
+    private TableColumn<BookData, String> availableBooks_col_bookID;
 
     @FXML
-    private TableColumn<bookData, String> availableBooks_col_bookTItle;
+    private TableColumn<BookData, String> availableBooks_col_bookTItle;
 
     @FXML
-    private TableColumn<bookData, String> availableBooks_col_author;
+    private TableColumn<BookData, String> availableBooks_col_author;
 
     @FXML
-    private TableColumn<bookData, String> availableBooks_col_genre;
+    private TableColumn<BookData, String> availableBooks_col_genre;
 
     @FXML
-    private TableColumn<bookData, String> availableBooks_col_date;
+    private TableColumn<BookData, String> availableBooks_col_date;
 
     @FXML
-    private TableColumn<bookData, String> availableBooks_col_price;
+    private TableColumn<BookData, String> availableBooks_col_price;
 
     @FXML
     private AnchorPane purchase_form;
@@ -185,28 +185,28 @@ public class dashboardController implements Initializable{
     private Button purchase_payBtn;
 
     @FXML
-    private TableView<customerData> purchase_tableView;
+    private TableView<CustomerData> purchase_tableView;
 
     @FXML
     private Spinner<Integer> purchase_quantity;
     
     @FXML
-    private TableColumn<customerData, String> purchase_col_bookID;
+    private TableColumn<CustomerData, String> purchase_col_bookID;
 
     @FXML
-    private TableColumn<customerData, String> purchase_col_bookTitle;
+    private TableColumn<CustomerData, String> purchase_col_bookTitle;
 
     @FXML
-    private TableColumn<customerData, String> purchase_col_author;
+    private TableColumn<CustomerData, String> purchase_col_author;
 
     @FXML
-    private TableColumn<customerData, String> purchase_col_genre;
+    private TableColumn<CustomerData, String> purchase_col_genre;
 
     @FXML
-    private TableColumn<customerData, String> purchase_col_quantity;
+    private TableColumn<CustomerData, String> purchase_col_quantity;
 
     @FXML
-    private TableColumn<customerData, String> purchase_col_price;
+    private TableColumn<CustomerData, String> purchase_col_price;
     
     private Connection connect;
     private PreparedStatement prepare;
@@ -219,7 +219,7 @@ public class dashboardController implements Initializable{
         
         String sql = "SELECT COUNT(id) FROM book";
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         int countAB = 0;
         try{
             prepare = connect.prepareStatement(sql);
@@ -238,7 +238,7 @@ public class dashboardController implements Initializable{
         
         String sql = "SELECT SUM(total) FROM customer_info";
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         double sumTotal = 0;
         try{
             prepare = connect.prepareStatement(sql);
@@ -256,7 +256,7 @@ public class dashboardController implements Initializable{
     public void dashboardTC(){
         String sql = "SELECT COUNT(id) FROM customer_info";
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         int countTC = 0;
         try{
             prepare = connect.prepareStatement(sql);
@@ -277,7 +277,7 @@ public class dashboardController implements Initializable{
         dashboard_incomeChart.getData().clear();
         
         String sql = "SELECT date, SUM(total) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 6";
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             XYChart.Series chart = new XYChart.Series();
@@ -303,8 +303,8 @@ public class dashboardController implements Initializable{
         dashboard_customerChart.getData().clear();
         
         String sql = "SELECT date, COUNT(id) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 4";
-        sql = "";
-        connect = database.connectDb();
+
+        connect = Database.connectDb();
         
         try{
             XYChart.Series chart = new XYChart.Series();
@@ -329,7 +329,7 @@ public class dashboardController implements Initializable{
         String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "
                 + "VALUES(?,?,?,?,?,?,?)";
 
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             Alert alert;
@@ -340,7 +340,7 @@ public class dashboardController implements Initializable{
                     || availableBooks_genre.getText().isEmpty()
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
-                    || getData.path == null || getData.path == ""){
+                    || GetData.path == null || GetData.path == ""){
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
@@ -370,7 +370,7 @@ public class dashboardController implements Initializable{
                     prepare.setString(5, String.valueOf(availableBooks_date.getValue()));
                     prepare.setString(6, availableBooks_price.getText());
 
-                    String uri = getData.path;
+                    String uri = GetData.path;
                     uri = uri.replace("\\", "\\\\");
 
                     prepare.setString(7, uri);
@@ -395,7 +395,7 @@ public class dashboardController implements Initializable{
     
     public void availableBooksUpdate(){
         
-        String uri = getData.path;
+        String uri = GetData.path;
         uri = uri.replace("\\", "\\\\");
 
         String sql = "UPDATE book SET title = '"
@@ -406,7 +406,7 @@ public class dashboardController implements Initializable{
                 +availableBooks_price.getText()+"', image = '"
                 +uri+"' WHERE book_id = '"+availableBooks_bookID.getText()+"'";
 
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             Alert alert;
@@ -417,7 +417,7 @@ public class dashboardController implements Initializable{
                     || availableBooks_genre.getText().isEmpty()
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
-                    || getData.path == null || getData.path == ""){
+                    || GetData.path == null || GetData.path == ""){
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
@@ -455,7 +455,7 @@ public class dashboardController implements Initializable{
         String sql = "DELETE FROM book WHERE book_id = '"
                 +availableBooks_bookID.getText()+"'";
 
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             Alert alert;
@@ -466,7 +466,7 @@ public class dashboardController implements Initializable{
                     || availableBooks_genre.getText().isEmpty()
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
-                    || getData.path == null || getData.path == ""){
+                    || GetData.path == null || GetData.path == ""){
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
@@ -507,7 +507,7 @@ public class dashboardController implements Initializable{
         availableBooks_date.setValue(null);
         availableBooks_price.setText("");
         
-        getData.path = "";
+        GetData.path = "";
         
         availableBooks_imageView.setImage(null);
     }
@@ -521,7 +521,7 @@ public class dashboardController implements Initializable{
         File file = open.showOpenDialog(main_form.getScene().getWindow());
         
         if(file != null){
-            getData.path = file.getAbsolutePath();
+            GetData.path = file.getAbsolutePath();
             
             image = new Image(file.toURI().toString(), 112, 137, false, true);
             availableBooks_imageView.setImage(image);
@@ -529,21 +529,21 @@ public class dashboardController implements Initializable{
         
     }
     
-    public ObservableList<bookData> availableBooksListData(){
+    public ObservableList<BookData> availableBooksListData(){
         
-        ObservableList<bookData> listData = FXCollections.observableArrayList();
+        ObservableList<BookData> listData = FXCollections.observableArrayList();
         String sql = "SELECT * FROM book";
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             
-            bookData bookD;
+            BookData bookD;
             
             while(result.next()){
-                bookD = new bookData(result.getInt("book_id"), result.getString("title")
+                bookD = new BookData(result.getInt("book_id"), result.getString("title")
                         , result.getString("author"), result.getString("genre")
                         , result.getDate("pub_date"), result.getDouble("price")
                         , result.getString("image"));
@@ -554,7 +554,7 @@ public class dashboardController implements Initializable{
         return listData;
     }
     
-    private ObservableList<bookData> availableBooksList;
+    private ObservableList<BookData> availableBooksList;
     public void availableBooksShowListData(){
         availableBooksList = availableBooksListData();
         
@@ -569,7 +569,7 @@ public class dashboardController implements Initializable{
     }
     
     public void availableBooksSelect(){
-        bookData bookD = availableBooks_tableView.getSelectionModel().getSelectedItem();
+        BookData bookD = availableBooks_tableView.getSelectionModel().getSelectedItem();
         int num = availableBooks_tableView.getSelectionModel().getSelectedIndex();
         
         if((num - 1) < -1){ return; }
@@ -581,7 +581,7 @@ public class dashboardController implements Initializable{
         availableBooks_date.setValue(LocalDate.parse(String.valueOf(bookD.getDate())));
         availableBooks_price.setText(String.valueOf(bookD.getPrice()));
         
-        getData.path = bookD.getImage();
+        GetData.path = bookD.getImage();
         
         String uri = "file:" + bookD.getImage();
         
@@ -592,7 +592,7 @@ public class dashboardController implements Initializable{
     
     public void availableBooksSeach(){
         
-        FilteredList<bookData> filter = new FilteredList<>(availableBooksList, e -> true);
+        FilteredList<BookData> filter = new FilteredList<>(availableBooksList, e -> true);
         
         availableBooks_search.textProperty().addListener((Observable, oldValue, newValue) ->{
             
@@ -620,7 +620,7 @@ public class dashboardController implements Initializable{
             });
         });
         
-        SortedList<bookData> sortList = new SortedList(filter);
+        SortedList<BookData> sortList = new SortedList(filter);
         sortList.comparatorProperty().bind(availableBooks_tableView.comparatorProperty());
         availableBooks_tableView.setItems(sortList);
         
@@ -633,7 +633,7 @@ public class dashboardController implements Initializable{
         String sql = "INSERT INTO customer (customer_id, book_id, title, author, genre, quantity, price, date) "
                 + "VALUES(?,?,?,?,?,?,?,?)";
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             Alert alert;
@@ -689,7 +689,7 @@ public class dashboardController implements Initializable{
         String sql = "INSERT INTO customer_info (customer_id, total, date) "
                 + "VALUES(?,?,?)";
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             Alert alert;
@@ -735,7 +735,7 @@ public class dashboardController implements Initializable{
         
         String sql = "SELECT SUM(price) FROM customer WHERE customer_id = '"+customerId+"'";
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             prepare = connect.prepareStatement(sql);
@@ -755,7 +755,7 @@ public class dashboardController implements Initializable{
         
         String sql = "SELECT book_id FROM book";
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             prepare = connect.prepareStatement(sql);
@@ -778,7 +778,7 @@ public class dashboardController implements Initializable{
         String sql = "SELECT book_id, title FROM book WHERE book_id = '"
                 +purchase_bookID.getSelectionModel().getSelectedItem()+"'";
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             prepare = connect.prepareStatement(sql);
@@ -803,7 +803,7 @@ public class dashboardController implements Initializable{
         String sql = "SELECT * FROM book WHERE title = '"
                 +purchase_bookTitle.getSelectionModel().getSelectedItem()+"'";
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         String bookId = "";
         String title = "";
@@ -833,22 +833,22 @@ public class dashboardController implements Initializable{
         
     }
     
-    public ObservableList<customerData> purchaseListData(){
+    public ObservableList<CustomerData> purchaseListData(){
         purchasecustomerId();
         String sql = "SELECT * FROM customer WHERE customer_id = '"+customerId+"'";
         
-        ObservableList<customerData> listData = FXCollections.observableArrayList();
+        ObservableList<CustomerData> listData = FXCollections.observableArrayList();
         
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             prepare  = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             
-            customerData customerD;
+            CustomerData customerD;
             
             while(result.next()){
-                customerD = new customerData(result.getInt("customer_id")
+                customerD = new CustomerData(result.getInt("customer_id")
                         , result.getInt("book_id")
                         , result.getString("title")
                         , result.getString("author")
@@ -864,7 +864,7 @@ public class dashboardController implements Initializable{
         return listData;
     }
     
-    private ObservableList<customerData> purchaseCustomerList;
+    private ObservableList<CustomerData> purchaseCustomerList;
     public void purchaseShowCustomerListData(){
         purchaseCustomerList = purchaseListData();
         
@@ -895,7 +895,7 @@ public class dashboardController implements Initializable{
         
         String sql = "SELECT MAX(customer_id) FROM customer";
         int checkCID = 0 ;
-        connect = database.connectDb();
+        connect = Database.connectDb();
         
         try{
             prepare = connect.prepareStatement(sql);
@@ -925,7 +925,7 @@ public class dashboardController implements Initializable{
     }
     
     public void displayUsername(){
-        String user = getData.username;
+        String user = GetData.username;
         user = user.substring(0, 1).toUpperCase() + user.substring(1);
         username.setText(user);
     }

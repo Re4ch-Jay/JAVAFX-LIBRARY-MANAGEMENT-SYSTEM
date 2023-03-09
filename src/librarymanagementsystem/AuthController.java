@@ -53,7 +53,7 @@ public class AuthController implements Initializable {
     public void loginAdmin() {
         System.out.println("Login btn clicked");
 
-        connect = database.connectDb();
+        connect = Database.connectDb();
 
         String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
 
@@ -76,7 +76,7 @@ public class AuthController implements Initializable {
                 if (result.next()) {
                     // IF CORRECT USERNAME AND PASSWORD
 
-                    getData.username = username.getText();
+                    GetData.username = username.getText();
 
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
@@ -107,7 +107,7 @@ public class AuthController implements Initializable {
     public void signUpAdmin() throws IOException {
         System.out.println("Sign up btn clicked");
 
-        connect = database.connectDb();
+        connect = Database.connectDb();
 
         String sql = "SELECT * FROM admin WHERE username = ?";
 

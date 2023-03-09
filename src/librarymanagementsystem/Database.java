@@ -4,7 +4,7 @@ package librarymanagementsystem;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class database {
+public class Database {
     
     public static Connection connectDb(){
         
