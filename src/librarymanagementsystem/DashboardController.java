@@ -31,6 +31,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
@@ -608,7 +609,8 @@ public class DashboardController implements Initializable{
         
         availableBooks_imageView.setImage(image);
     }
-    
+
+    /*
     public void availableBooksSeach(){
         
         FilteredList<BookData> filter = new FilteredList<>(availableBooksList, e -> true);
@@ -644,7 +646,23 @@ public class DashboardController implements Initializable{
         availableBooks_tableView.setItems(sortList);
         
     }
-    
+    */
+    public void availableBooksSeach() {
+        String searchQuery = availableBooks_search.getText().toLowerCase();
+        ObservableList<BookData> filteredBooks = FXCollections.observableArrayList();
+
+        for (BookData book : availableBooksList) {
+            if (book.getTitle().toLowerCase().contains(searchQuery) ||
+                    book.getAuthor().toLowerCase().contains(searchQuery) ||
+                    book.getBookId().toString().toLowerCase().contains(searchQuery)) {
+                filteredBooks.add(book);
+            }
+        }
+
+        availableBooks_tableView.setItems(filteredBooks);
+    }
+
+
     private double totalP;
     public void purchaseAdd(){
         purchasecustomerId();
