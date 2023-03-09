@@ -29,6 +29,7 @@ import librarymanagementsystem.config.Database;
 import librarymanagementsystem.helper.GetData;
 import librarymanagementsystem.helper.PasswordEncryption;
 public class AuthController implements Initializable {
+    PasswordEncryption passwordEncryption = new PasswordEncryption();
 
     @FXML
     private AnchorPane main_form;
@@ -79,7 +80,6 @@ public class AuthController implements Initializable {
             } else {
                 if (result.next()) {
 
-                    PasswordEncryption passwordEncryption = new PasswordEncryption();
                     String hashedPassword;
                     // IF USERNAME EXISTS
 

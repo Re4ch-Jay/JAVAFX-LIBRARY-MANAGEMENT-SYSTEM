@@ -45,7 +45,7 @@ import librarymanagementsystem.helper.PasswordEncryption;
 
 public class DashboardController implements Initializable{
 
-
+    PasswordEncryption passwordEncryption = new PasswordEncryption();
     @FXML
     private AnchorPane main_form;
 
@@ -960,7 +960,9 @@ public class DashboardController implements Initializable{
             dashboard_btn.setStyle("-fx-background-color:linear-gradient(to top right, #72513c, #ab853e);");
             availableBooks_btn.setStyle("-fx-background-color: transparent");
             purchase_btn.setStyle("-fx-background-color: transparent");
-            
+            profile_settings.setStyle("-fx-background-color: transparent");
+
+
             dashboardAB();
             dashboardTI();
             dashboardTC();
@@ -976,7 +978,8 @@ public class DashboardController implements Initializable{
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to top right, #72513c, #ab853e);");
             dashboard_btn.setStyle("-fx-background-color: transparent");
             purchase_btn.setStyle("-fx-background-color: transparent");
-            
+            profile_settings.setStyle("-fx-background-color: transparent");
+
             availableBooksShowListData();
             availableBooksSeach();
             
@@ -989,6 +992,7 @@ public class DashboardController implements Initializable{
             purchase_btn.setStyle("-fx-background-color:linear-gradient(to top right, #72513c, #ab853e);");
             availableBooks_btn.setStyle("-fx-background-color: transparent");
             dashboard_btn.setStyle("-fx-background-color: transparent");
+            profile_settings.setStyle("-fx-background-color: transparent");
             
             purchaseBookTitle();
             purchaseBookId();
@@ -1083,16 +1087,8 @@ public class DashboardController implements Initializable{
         
     }
 
-    private String hashPassword(String password) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.update(password.getBytes());
-        byte[] digest = md.digest();
-        return Base64.getEncoder().encodeToString(digest);
-    }
-
     public void updateAdmin(){
         System.out.println("update user profile click");
-        PasswordEncryption passwordEncryption = new PasswordEncryption();
         String hashedPassword;
         try {
             hashedPassword = passwordEncryption.hashPassword(password_update.getText().trim());
