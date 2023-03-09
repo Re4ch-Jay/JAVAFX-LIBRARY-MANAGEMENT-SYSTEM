@@ -3,10 +3,7 @@ package librarymanagementsystem;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
@@ -48,7 +45,11 @@ import librarymanagementsystem.helper.BookData;
 import librarymanagementsystem.helper.CustomerData;
 import librarymanagementsystem.helper.GetData;
 
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+public class dashboardController implements Initializable {
+=======
 public class DashboardController implements Initializable{
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
 
     @FXML
     private AnchorPane main_form;
@@ -193,7 +194,7 @@ public class DashboardController implements Initializable{
 
     @FXML
     private Spinner<Integer> purchase_quantity;
-    
+
     @FXML
     private TableColumn<CustomerData, String> purchase_col_bookID;
 
@@ -210,124 +211,178 @@ public class DashboardController implements Initializable{
     private TableColumn<CustomerData, String> purchase_col_quantity;
 
     @FXML
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+    private TableColumn<customerData, String> purchase_col_price;
+
+=======
     private TableColumn<CustomerData, String> purchase_col_price;
     
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
     private Connection connect;
     private PreparedStatement prepare;
     private Statement statement;
     private ResultSet result;
-    
+
     private Image image;
-    
-    public void dashboardAB(){
-        
+
+    public void dashboardAB() {
+
         String sql = "SELECT COUNT(id) FROM book";
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+        connect = database.connectDb();
+=======
         
         connect = Database.connectDb();
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
         int countAB = 0;
-        try{
+        try {
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
-            
-            if(result.next()){
+
+            if (result.next()) {
                 countAB = result.getInt("COUNT(id)");
             }
-            
+
             dashboard_AB.setText(String.valueOf(countAB));
-            
-        }catch(Exception e){e.printStackTrace();}
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void dashboardTI(){
-        
+
+    public void dashboardTI() {
+
         String sql = "SELECT SUM(total) FROM customer_info";
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+        connect = database.connectDb();
+=======
         
         connect = Database.connectDb();
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
         double sumTotal = 0;
-        try{
+        try {
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
-            
-            if(result.next()){
+
+            if (result.next()) {
                 sumTotal = result.getDouble("SUM(total)");
             }
-            
+
             dashboard_TI.setText("$" + String.valueOf(sumTotal));
-            
-        }catch(Exception e){e.printStackTrace();}
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void dashboardTC(){
+
+    public void dashboardTC() {
         String sql = "SELECT COUNT(id) FROM customer_info";
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+        connect = database.connectDb();
+=======
         
         connect = Database.connectDb();
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
         int countTC = 0;
-        try{
+        try {
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
-            
-            if(result.next()){
+
+            if (result.next()) {
                 countTC = result.getInt("COUNT(id)");
             }
-            
+
             dashboard_TC.setText(String.valueOf(countTC));
-            
-        }catch(Exception e){e.printStackTrace();}
-        
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-    
-    public void dashboardIncomeChart(){
-        
+
+    public void dashboardIncomeChart() {
+
         dashboard_incomeChart.getData().clear();
-        
+
         String sql = "SELECT date, SUM(total) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 6";
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+        sql = "";
+        connect = database.connectDb();
+
+        try {
+=======
         connect = Database.connectDb();
         
         try{
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
             XYChart.Series chart = new XYChart.Series();
-            
+
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
-            
-            while(result.next()){
+
+            while (result.next()) {
 
                 chart.getData().add(new XYChart.Data(result.getString(1), result.getInt(2)));
             }
             chart.setName("Income in USD");
-            
+
             dashboard_incomeChart.getData().add(chart);
 
-        }catch(Exception e){e.printStackTrace();}
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
-    
-    public void dashboardCustomerChart(){
-        
+
+    public void dashboardCustomerChart() {
+
         dashboard_customerChart.getData().clear();
-        
+
         String sql = "SELECT date, COUNT(id) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 4";
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+        sql = "";
+        connect = database.connectDb();
+
+        try {
+=======
 
         connect = Database.connectDb();
         
         try{
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
             XYChart.Series chart = new XYChart.Series();
-            
+
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
 
-            while(result.next()){
+            while (result.next()) {
                 chart.getData().add(new XYChart.Data(result.getString(1), result.getInt(2)));
             }
 
 
-
             chart.setName("Customer who borrowed the books");
             dashboard_customerChart.getData().add(chart);
-            
-        }catch(Exception e){e.printStackTrace();}
-        
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+    public void availableBooksAdd() {
+
+//        String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "
+//                + "VALUES(?,?,?,?,?,?,?)";
+//
+        connect = database.connectDb();
+
+        try {
+=======
     public void availableBooksAdd(){
         
         String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "
@@ -336,36 +391,47 @@ public class DashboardController implements Initializable{
         connect = Database.connectDb();
         
         try{
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
             Alert alert;
-            
-            if(availableBooks_bookID.getText().isEmpty()
+
+            if (availableBooks_bookID.getText().isEmpty()
                     || availableBooks_bookTitle.getText().isEmpty()
                     || availableBooks_author.getText().isEmpty()
                     || availableBooks_genre.getText().isEmpty()
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+                    || getData.path == null || getData.path == "") {
+=======
                     || GetData.path == null || GetData.path == ""){
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
-            }else{
+            } else {
                 // CHECK IF BOOK ID IS ALREADY EXIST
                 String checkData = "SELECT book_id FROM book WHERE book_id = '"
-                        +availableBooks_bookID.getText()+"'";
-                
+                        + availableBooks_bookID.getText() + "'";
+
                 statement = connect.createStatement();
                 result = statement.executeQuery(checkData);
-                
-                if(result.next()){
+
+                if (result.next()) {
                     alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Book ID: " + availableBooks_bookID.getText() + " was already exist!");
                     alert.showAndWait();
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+                } else {
+                    String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "
+                            + "VALUES(?,?,?,?,?,?,?)";
+=======
                 }else{
 
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
                     prepare = connect.prepareStatement(sql);
                     prepare.setString(1, availableBooks_bookID.getText());
                     prepare.setString(2, availableBooks_bookTitle.getText());
@@ -378,24 +444,46 @@ public class DashboardController implements Initializable{
                     uri = uri.replace("\\", "\\\\");
 
                     prepare.setString(7, uri);
-                    
+
                     prepare.executeUpdate();
-                    
+
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successfully Added!");
                     alert.showAndWait();
-                    
+
                     // TO BE UPDATED THE TABLEVIEW 
                     availableBooksShowListData();
                     // CLEAR FIELDS
                     availableBooksClear();
                 }
             }
-        }catch(Exception e){e.printStackTrace();}
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+    public void availableBooksUpdate() {
+
+        String uri = getData.path;
+        uri = uri.replace("\\", "\\\\");
+
+        String sql = "UPDATE book SET title = '"
+                + availableBooks_bookTitle.getText() + "', author = '"
+                + availableBooks_author.getText() + "', genre = '"
+                + availableBooks_genre.getText() + "', pub_date = '"
+                + availableBooks_date.getValue() + "', price = '"
+                + availableBooks_price.getText() + "', image = '"
+                + uri + "' WHERE book_id = '" + availableBooks_bookID.getText() + "'";
+        sql = "";
+
+        connect = database.connectDb();
+
+        try {
+=======
     
     public void availableBooksUpdate(){
         
@@ -413,125 +501,175 @@ public class DashboardController implements Initializable{
         connect = Database.connectDb();
         
         try{
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
             Alert alert;
-            
-            if(availableBooks_bookID.getText().isEmpty()
+
+            if (availableBooks_bookID.getText().isEmpty()
                     || availableBooks_bookTitle.getText().isEmpty()
                     || availableBooks_author.getText().isEmpty()
                     || availableBooks_genre.getText().isEmpty()
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+                    || getData.path == null || getData.path == "") {
+=======
                     || GetData.path == null || GetData.path == ""){
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
-            }else{
+            } else {
                 alert = new Alert(AlertType.CONFIRMATION);
                 alert.setTitle("Confirmation Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Are you sure you want to UPDATE Book ID: " + availableBooks_bookID.getText() + "?");
                 Optional<ButtonType> option = alert.showAndWait();
-                
-                if(option.get().equals(ButtonType.OK)){
+
+                if (option.get().equals(ButtonType.OK)) {
                     statement = connect.createStatement();
                     statement.executeUpdate(sql);
-                    
+
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successful Updated!");
                     alert.showAndWait();
-                    
+
                     // TO BE UPDATED THE TABLEVIEW 
                     availableBooksShowListData();
                     // CLEAR FIELDS
                     availableBooksClear();
                 }
             }
-        }catch(Exception e){e.printStackTrace();}
-        
-    }
-    
-    public void availableBooksDelete(){
-        
-        String sql = "DELETE FROM book WHERE book_id = '"
-                +availableBooks_bookID.getText()+"'";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+    }
+
+    public void availableBooksDelete() {
+
+        String sql = "DELETE FROM book WHERE book_id = '"
+                + availableBooks_bookID.getText() + "'";
+
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+        connect = database.connectDb();
+
+        try {
+=======
         connect = Database.connectDb();
         
         try{
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
             Alert alert;
-            
-            if(availableBooks_bookID.getText().isEmpty()
+
+            if (availableBooks_bookID.getText().isEmpty()
                     || availableBooks_bookTitle.getText().isEmpty()
                     || availableBooks_author.getText().isEmpty()
                     || availableBooks_genre.getText().isEmpty()
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+                    || getData.path == null || getData.path == "") {
+=======
                     || GetData.path == null || GetData.path == ""){
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
-            }else{
+            } else {
                 alert = new Alert(AlertType.CONFIRMATION);
                 alert.setTitle("Confirmation Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Are you sure you want to DELETE Book ID: " + availableBooks_bookID.getText() + "?");
                 Optional<ButtonType> option = alert.showAndWait();
-                
-                if(option.get().equals(ButtonType.OK)){
+
+                if (option.get().equals(ButtonType.OK)) {
                     statement = connect.createStatement();
                     statement.executeUpdate(sql);
-                    
+
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successful Delete!");
                     alert.showAndWait();
-                    
+
                     // TO BE UPDATED THE TABLEVIEW 
                     availableBooksShowListData();
                     // CLEAR FIELDS
                     availableBooksClear();
                 }
             }
-        }catch(Exception e){e.printStackTrace();}
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-    
-    public void availableBooksClear(){
+
+    public void availableBooksClear() {
         availableBooks_bookID.setText("");
         availableBooks_bookTitle.setText("");
         availableBooks_author.setText("");
         availableBooks_genre.setText("");
         availableBooks_date.setValue(null);
         availableBooks_price.setText("");
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+        getData.path = "";
+
+=======
         
         GetData.path = "";
         
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
         availableBooks_imageView.setImage(null);
     }
-    
-    public void avaialableBooksInsertImage(){
-        
+
+    public void avaialableBooksInsertImage() {
+
         FileChooser open = new FileChooser();
         open.setTitle("Open Image File");
         open.getExtensionFilters().add(new ExtensionFilter("File Image", "*jpg", "*png"));
-        
+
         File file = open.showOpenDialog(main_form.getScene().getWindow());
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+        if (file != null) {
+            getData.path = file.getAbsolutePath();
+
+=======
         
         if(file != null){
             GetData.path = file.getAbsolutePath();
             
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
             image = new Image(file.toURI().toString(), 112, 137, false, true);
             availableBooks_imageView.setImage(image);
         }
-        
+
     }
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+    public ObservableList<bookData> availableBooksListData() {
+
+        ObservableList<bookData> listData = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM book";
+
+        connect = database.connectDb();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            bookData bookD;
+
+            while (result.next()) {
+                bookD = new bookData(result.getInt("book_id"), result.getString("title")
+=======
     
     public ObservableList<BookData> availableBooksListData(){
         
@@ -548,66 +686,96 @@ public class DashboardController implements Initializable{
             
             while(result.next()){
                 bookD = new BookData(result.getInt("book_id"), result.getString("title")
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
                         , result.getString("author"), result.getString("genre")
                         , result.getDate("pub_date"), result.getDouble("price")
                         , result.getString("image"));
-                
+
                 listData.add(bookD);
             }
-        }catch(Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return listData;
     }
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+    private ObservableList<bookData> availableBooksList;
+
+    public void availableBooksShowListData() {
+=======
     
     private ObservableList<BookData> availableBooksList;
     public void availableBooksShowListData(){
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
         availableBooksList = availableBooksListData();
-        
+
         availableBooks_col_bookID.setCellValueFactory(new PropertyValueFactory<>("bookId"));
         availableBooks_col_bookTItle.setCellValueFactory(new PropertyValueFactory<>("title"));
         availableBooks_col_author.setCellValueFactory(new PropertyValueFactory<>("author"));
         availableBooks_col_genre.setCellValueFactory(new PropertyValueFactory<>("genre"));
         availableBooks_col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         availableBooks_col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        
+
         availableBooks_tableView.setItems(availableBooksList);
     }
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+    public void availableBooksSelect() {
+        bookData bookD = availableBooks_tableView.getSelectionModel().getSelectedItem();
+=======
     
     public void availableBooksSelect(){
         BookData bookD = availableBooks_tableView.getSelectionModel().getSelectedItem();
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
         int num = availableBooks_tableView.getSelectionModel().getSelectedIndex();
-        
-        if((num - 1) < -1){ return; }
-        
+
+        if ((num - 1) < -1) {
+            return;
+        }
+
         availableBooks_bookID.setText(String.valueOf(bookD.getBookId()));
         availableBooks_bookTitle.setText(bookD.getTitle());
         availableBooks_author.setText(bookD.getAuthor());
         availableBooks_genre.setText(bookD.getGenre());
         availableBooks_date.setValue(LocalDate.parse(String.valueOf(bookD.getDate())));
         availableBooks_price.setText(String.valueOf(bookD.getPrice()));
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+        getData.path = bookD.getImage();
+
+=======
         
         GetData.path = bookD.getImage();
         
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
         String uri = "file:" + bookD.getImage();
-        
+
         image = new Image(uri, 112, 137, false, true);
-        
+
         availableBooks_imageView.setImage(image);
     }
-    
+
     public void availableBooksSeach(){
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+        FilteredList<bookData> filter = new FilteredList<>(availableBooksList, e -> true);
+
+=======
         
         FilteredList<BookData> filter = new FilteredList<>(availableBooksList, e -> true);
         
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
         availableBooks_search.textProperty().addListener((Observable, oldValue, newValue) ->{
-            
+
             filter.setPredicate(predicateBookData -> {
-                
+
                 if(newValue == null || newValue.isEmpty()){
                     return true;
                 }
-                
+
                 String searchKey = newValue.toLowerCase();
-                
+
                 if(predicateBookData.getBookId().toString().contains(searchKey)){
                     return true;
                 }else if(predicateBookData.getTitle().toLowerCase().contains(searchKey)){
@@ -623,13 +791,19 @@ public class DashboardController implements Initializable{
                 }else return false;
             });
         });
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+
+        SortedList<bookData> sortList = new SortedList(filter);
+=======
         
         SortedList<BookData> sortList = new SortedList(filter);
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
         sortList.comparatorProperty().bind(availableBooks_tableView.comparatorProperty());
         availableBooks_tableView.setItems(sortList);
-        
+
     }
-    
+
+
     private double totalP;
     public void purchaseAdd(){
         purchasecustomerId();
@@ -689,11 +863,15 @@ public class DashboardController implements Initializable{
     }
     
     public void purchasePay(){
+<<<<<<< HEAD:src/librarymanagementsystem/dashboardController.java
+        connect = database.connectDb();
+=======
         
         String sql = "INSERT INTO customer_info (customer_id, total, date) "
                 + "VALUES(?,?,?)";
         
         connect = Database.connectDb();
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0:src/librarymanagementsystem/DashboardController.java
         
         try{
             Alert alert;
@@ -711,6 +889,8 @@ public class DashboardController implements Initializable{
                 Optional<ButtonType> option = alert.showAndWait();
                 
                 if(option.get().equals(ButtonType.OK)){
+                    String sql = "INSERT INTO customer_info (customer_id, total, date) "
+                            + "VALUES(?,?,?)";
                     prepare = connect.prepareStatement(sql);
                     prepare.setString(1, String.valueOf(customerId));
                     prepare.setString(2, String.valueOf(displayTotal));

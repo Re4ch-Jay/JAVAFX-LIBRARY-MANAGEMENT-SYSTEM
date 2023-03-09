@@ -4,8 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="e381b43a-e650-482d-a7a0-51bb2d62a1be" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+    <list default="true" id="1c7b8599-f9cb-47ea-ad09-02320c5c383d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/config/Database.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/config/Env.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/helper/BookData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/helper/GetData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/librarymanagementsystem/config/Env.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_31.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_31.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/bookshopmanagementsystem/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraryManagementSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManagementSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/jfx-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/jfx-impl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/AuthDesign.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/fxml/AuthDesign.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/LibraryManagementSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/LibraryManagementSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/bookData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/customerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/helper/CustomerData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/fxml/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboardDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/styles/dashboardDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/database.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/getData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/loginDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/styles/loginDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/fxml/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/AuthDesign.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/fxml/AuthDesign.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/LibraryManagementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/LibraryManagementSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/bookData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/helper/BookData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/customerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/helper/CustomerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/fxml/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/dashboardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/dashboardDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/styles/dashboardDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/config/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/getData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/helper/GetData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/loginDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/styles/loginDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/fxml/signup.fxml" afterDir="false" />
+>>>>>>> 1d5e1bc7bbd1118b91f73a3fce37719a7c213996
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +79,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "D:/java_lib/mysql-connector-j-8.0.31/mysql-connector-j-8.0.31/mysql-connector-j-8.0.31.jar",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -67,5 +111,16 @@
       <updated>1678327854358</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
