@@ -43,6 +43,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import librarymanagementsystem.config.Database;
+import librarymanagementsystem.helper.BookData;
+import librarymanagementsystem.helper.CustomerData;
+import librarymanagementsystem.helper.GetData;
 
 public class DashboardController implements Initializable{
 
@@ -992,7 +996,7 @@ public class DashboardController implements Initializable{
                 // HIDE YOUR DASHBOARD
                 logout.getScene().getWindow().hide();
                 // LINK YOUR LOGIN FORM
-                Parent root = FXMLLoader.load(getClass().getResource("AuthDesign.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("fxml/AuthDesign.fxml"));
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
 

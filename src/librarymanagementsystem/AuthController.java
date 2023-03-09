@@ -22,6 +22,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import librarymanagementsystem.config.Database;
+import librarymanagementsystem.helper.GetData;
 
 public class AuthController implements Initializable {
 
@@ -160,7 +162,7 @@ public class AuthController implements Initializable {
         signInBtn.getScene().getWindow().hide();
 
         // LINK YOUR DASHBOARD FORM : )
-        Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/dashboard.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
 
@@ -184,7 +186,7 @@ public class AuthController implements Initializable {
         signInBtn.getScene().getWindow().hide();
 
         // LINK YOUR DASHBOARD FORM : )
-        Parent root = FXMLLoader.load(getClass().getResource("signup.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/signup.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
 
@@ -209,7 +211,7 @@ public class AuthController implements Initializable {
         loginBtn.getScene().getWindow().hide();
 
         // LINK YOUR DASHBOARD FORM : )
-        Parent root = FXMLLoader.load(getClass().getResource("AuthDesign.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/AuthDesign.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
 

@@ -16,7 +16,7 @@ public class  LibraryManagementSystem extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(LibraryManagementSystem.class.getResource("AuthDesign.fxml"));
+        Parent root = FXMLLoader.load(LibraryManagementSystem.class.getResource("fxml/AuthDesign.fxml"));
         
         Scene scene = new Scene(root);
         
