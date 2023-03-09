@@ -121,7 +121,7 @@
                                           </Label>
                                           <TextField fx:id="username_update" layoutX="50.0" layoutY="173.0"  prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@../styles/loginDesign.css" />
                                           <PasswordField fx:id="password_update" layoutX="50.0" layoutY="219.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@../styles/loginDesign.css" />
-                                          <Button fx:id="update_btn" layoutX="50.0" layoutY="277.0" mnemonicParsing="false"  prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@../styles/loginDesign.css" text="UPDATE ADMIN" />
+                                          <Button fx:id="updateBtn" layoutX="50.0" layoutY="277.0" mnemonicParsing="false" onAction="#updateAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@../styles/loginDesign.css" text="UPDATE ADMIN" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -419,7 +419,6 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-
                      </children>
                   </AnchorPane>
                </center>
