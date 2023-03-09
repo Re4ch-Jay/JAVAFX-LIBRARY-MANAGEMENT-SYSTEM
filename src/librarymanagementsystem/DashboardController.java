@@ -72,6 +72,9 @@ public class DashboardController implements Initializable{
     private Button purchase_btn;
 
     @FXML
+    private Button profile_settings;
+
+    @FXML
     private Button logout;
 
     @FXML
@@ -94,6 +97,9 @@ public class DashboardController implements Initializable{
 
     @FXML
     private AnchorPane availableBooks_form;
+
+    @FXML
+    private AnchorPane profile_settings_form;
 
     @FXML
     private ImageView availableBooks_imageView;
@@ -942,6 +948,7 @@ public class DashboardController implements Initializable{
             dashboard_form.setVisible(true);
             availableBooks_form.setVisible(false);
             purchase_form.setVisible(false);
+            profile_settings_form.setVisible(false);
             
             dashboard_btn.setStyle("-fx-background-color:linear-gradient(to top right, #72513c, #ab853e);");
             availableBooks_btn.setStyle("-fx-background-color: transparent");
@@ -957,6 +964,7 @@ public class DashboardController implements Initializable{
             dashboard_form.setVisible(false);
             availableBooks_form.setVisible(true);
             purchase_form.setVisible(false);
+            profile_settings_form.setVisible(false);
             
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to top right, #72513c, #ab853e);");
             dashboard_btn.setStyle("-fx-background-color: transparent");
@@ -969,7 +977,8 @@ public class DashboardController implements Initializable{
             dashboard_form.setVisible(false);
             availableBooks_form.setVisible(false);
             purchase_form.setVisible(true);
-            
+            profile_settings_form.setVisible(false);
+
             purchase_btn.setStyle("-fx-background-color:linear-gradient(to top right, #72513c, #ab853e);");
             availableBooks_btn.setStyle("-fx-background-color: transparent");
             dashboard_btn.setStyle("-fx-background-color: transparent");
@@ -980,6 +989,16 @@ public class DashboardController implements Initializable{
             purchaseDisplayQTY();
             purchaseDisplayTotal();
             
+        } else if (event.getSource() == profile_settings) {
+            dashboard_form.setVisible(false);
+            availableBooks_form.setVisible(false);
+            purchase_form.setVisible(false);
+            profile_settings_form.setVisible(true);
+
+            availableBooks_btn.setStyle("-fx-background-color: transparent");
+            dashboard_btn.setStyle("-fx-background-color: transparent");
+            purchase_btn.setStyle("-fx-background-color: transparent");
+            profile_settings.setStyle("-fx-background-color:linear-gradient(to top right, #72513c, #ab853e);");
         }
     }
     
