@@ -3,10 +3,7 @@ package librarymanagementsystem;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
@@ -44,7 +41,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class dashboardController implements Initializable{
+public class dashboardController implements Initializable {
 
     @FXML
     private AnchorPane main_form;
@@ -189,7 +186,7 @@ public class dashboardController implements Initializable{
 
     @FXML
     private Spinner<Integer> purchase_quantity;
-    
+
     @FXML
     private TableColumn<customerData, String> purchase_col_bookID;
 
@@ -207,162 +204,173 @@ public class dashboardController implements Initializable{
 
     @FXML
     private TableColumn<customerData, String> purchase_col_price;
-    
+
     private Connection connect;
     private PreparedStatement prepare;
     private Statement statement;
     private ResultSet result;
-    
+
     private Image image;
-    
-    public void dashboardAB(){
-        
+
+    public void dashboardAB() {
+
         String sql = "SELECT COUNT(id) FROM book";
-        
+
         connect = database.connectDb();
         int countAB = 0;
-        try{
+        try {
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
-            
-            if(result.next()){
+
+            if (result.next()) {
                 countAB = result.getInt("COUNT(id)");
             }
-            
+
             dashboard_AB.setText(String.valueOf(countAB));
-            
-        }catch(Exception e){e.printStackTrace();}
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void dashboardTI(){
-        
+
+    public void dashboardTI() {
+
         String sql = "SELECT SUM(total) FROM customer_info";
-        
+
         connect = database.connectDb();
         double sumTotal = 0;
-        try{
+        try {
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
-            
-            if(result.next()){
+
+            if (result.next()) {
                 sumTotal = result.getDouble("SUM(total)");
             }
-            
+
             dashboard_TI.setText("$" + String.valueOf(sumTotal));
-            
-        }catch(Exception e){e.printStackTrace();}
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void dashboardTC(){
+
+    public void dashboardTC() {
         String sql = "SELECT COUNT(id) FROM customer_info";
-        
+
         connect = database.connectDb();
         int countTC = 0;
-        try{
+        try {
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
-            
-            if(result.next()){
+
+            if (result.next()) {
                 countTC = result.getInt("COUNT(id)");
             }
-            
+
             dashboard_TC.setText(String.valueOf(countTC));
-            
-        }catch(Exception e){e.printStackTrace();}
-        
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-    
-    public void dashboardIncomeChart(){
-        
+
+    public void dashboardIncomeChart() {
+
         dashboard_incomeChart.getData().clear();
-        
+
         String sql = "SELECT date, SUM(total) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 6";
         sql = "";
         connect = database.connectDb();
-        
-        try{
+
+        try {
             XYChart.Series chart = new XYChart.Series();
-            
+
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
-            
-            while(result.next()){
+
+            while (result.next()) {
 
                 chart.getData().add(new XYChart.Data(result.getString(1), result.getInt(2)));
             }
             chart.setName("Income in USD");
-            
+
             dashboard_incomeChart.getData().add(chart);
 
-        }catch(Exception e){e.printStackTrace();}
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
-    
-    public void dashboardCustomerChart(){
-        
+
+    public void dashboardCustomerChart() {
+
         dashboard_customerChart.getData().clear();
-        
+
         String sql = "SELECT date, COUNT(id) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 4";
         sql = "";
         connect = database.connectDb();
-        
-        try{
+
+        try {
             XYChart.Series chart = new XYChart.Series();
-            
+
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
 
-            while(result.next()){
+            while (result.next()) {
                 chart.getData().add(new XYChart.Data(result.getString(1), result.getInt(2)));
             }
 
 
-
             chart.setName("Customer who borrowed the books");
             dashboard_customerChart.getData().add(chart);
-            
-        }catch(Exception e){e.printStackTrace();}
-        
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-    public void availableBooksAdd(){
-        
+
+    public void availableBooksAdd() {
+
 //        String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "
 //                + "VALUES(?,?,?,?,?,?,?)";
 //
         connect = database.connectDb();
-        
-        try{
+
+        try {
             Alert alert;
-            
-            if(availableBooks_bookID.getText().isEmpty()
+
+            if (availableBooks_bookID.getText().isEmpty()
                     || availableBooks_bookTitle.getText().isEmpty()
                     || availableBooks_author.getText().isEmpty()
                     || availableBooks_genre.getText().isEmpty()
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
-                    || getData.path == null || getData.path == ""){
+                    || getData.path == null || getData.path == "") {
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
-            }else{
+            } else {
                 // CHECK IF BOOK ID IS ALREADY EXIST
                 String checkData = "SELECT book_id FROM book WHERE book_id = '"
-                        +availableBooks_bookID.getText()+"'";
-                
+                        + availableBooks_bookID.getText() + "'";
+
                 statement = connect.createStatement();
                 result = statement.executeQuery(checkData);
-                
-                if(result.next()){
+
+                if (result.next()) {
                     alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Book ID: " + availableBooks_bookID.getText() + " was already exist!");
                     alert.showAndWait();
-                }else{
-                    String sql = "";
+                } else {
+                    String sql = "INSERT INTO book (book_id, title, author, genre, pub_date, price, image) "
+                            + "VALUES(?,?,?,?,?,?,?)";
                     prepare = connect.prepareStatement(sql);
                     prepare.setString(1, availableBooks_bookID.getText());
                     prepare.setString(2, availableBooks_bookTitle.getText());
@@ -375,238 +383,249 @@ public class dashboardController implements Initializable{
                     uri = uri.replace("\\", "\\\\");
 
                     prepare.setString(7, uri);
-                    
+
                     prepare.executeUpdate();
-                    
+
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successfully Added!");
                     alert.showAndWait();
-                    
+
                     // TO BE UPDATED THE TABLEVIEW 
                     availableBooksShowListData();
                     // CLEAR FIELDS
                     availableBooksClear();
                 }
             }
-        }catch(Exception e){e.printStackTrace();}
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-    
-    public void availableBooksUpdate(){
-        
+
+    public void availableBooksUpdate() {
+
         String uri = getData.path;
         uri = uri.replace("\\", "\\\\");
 
         String sql = "UPDATE book SET title = '"
-                +availableBooks_bookTitle.getText()+"', author = '"
-                +availableBooks_author.getText()+"', genre = '"
-                +availableBooks_genre.getText()+"', pub_date = '"
-                +availableBooks_date.getValue()+"', price = '"
-                +availableBooks_price.getText()+"', image = '"
-                +uri+"' WHERE book_id = '"+availableBooks_bookID.getText()+"'";
+                + availableBooks_bookTitle.getText() + "', author = '"
+                + availableBooks_author.getText() + "', genre = '"
+                + availableBooks_genre.getText() + "', pub_date = '"
+                + availableBooks_date.getValue() + "', price = '"
+                + availableBooks_price.getText() + "', image = '"
+                + uri + "' WHERE book_id = '" + availableBooks_bookID.getText() + "'";
         sql = "";
 
         connect = database.connectDb();
-        
-        try{
+
+        try {
             Alert alert;
-            
-            if(availableBooks_bookID.getText().isEmpty()
+
+            if (availableBooks_bookID.getText().isEmpty()
                     || availableBooks_bookTitle.getText().isEmpty()
                     || availableBooks_author.getText().isEmpty()
                     || availableBooks_genre.getText().isEmpty()
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
-                    || getData.path == null || getData.path == ""){
+                    || getData.path == null || getData.path == "") {
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
-            }else{
+            } else {
                 alert = new Alert(AlertType.CONFIRMATION);
                 alert.setTitle("Confirmation Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Are you sure you want to UPDATE Book ID: " + availableBooks_bookID.getText() + "?");
                 Optional<ButtonType> option = alert.showAndWait();
-                
-                if(option.get().equals(ButtonType.OK)){
+
+                if (option.get().equals(ButtonType.OK)) {
                     statement = connect.createStatement();
                     statement.executeUpdate(sql);
-                    
+
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successful Updated!");
                     alert.showAndWait();
-                    
+
                     // TO BE UPDATED THE TABLEVIEW 
                     availableBooksShowListData();
                     // CLEAR FIELDS
                     availableBooksClear();
                 }
             }
-        }catch(Exception e){e.printStackTrace();}
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-    
-    public void availableBooksDelete(){
-        
+
+    public void availableBooksDelete() {
+
         String sql = "DELETE FROM book WHERE book_id = '"
-                +availableBooks_bookID.getText()+"'";
+                + availableBooks_bookID.getText() + "'";
 
         connect = database.connectDb();
-        
-        try{
+
+        try {
             Alert alert;
-            
-            if(availableBooks_bookID.getText().isEmpty()
+
+            if (availableBooks_bookID.getText().isEmpty()
                     || availableBooks_bookTitle.getText().isEmpty()
                     || availableBooks_author.getText().isEmpty()
                     || availableBooks_genre.getText().isEmpty()
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
-                    || getData.path == null || getData.path == ""){
+                    || getData.path == null || getData.path == "") {
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
-            }else{
+            } else {
                 alert = new Alert(AlertType.CONFIRMATION);
                 alert.setTitle("Confirmation Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Are you sure you want to DELETE Book ID: " + availableBooks_bookID.getText() + "?");
                 Optional<ButtonType> option = alert.showAndWait();
-                
-                if(option.get().equals(ButtonType.OK)){
+
+                if (option.get().equals(ButtonType.OK)) {
                     statement = connect.createStatement();
                     sql = "";
                     statement.executeUpdate(sql);
-                    
+
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successful Delete!");
                     alert.showAndWait();
-                    
+
                     // TO BE UPDATED THE TABLEVIEW 
                     availableBooksShowListData();
                     // CLEAR FIELDS
                     availableBooksClear();
                 }
             }
-        }catch(Exception e){e.printStackTrace();}
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-    
-    public void availableBooksClear(){
+
+    public void availableBooksClear() {
         availableBooks_bookID.setText("");
         availableBooks_bookTitle.setText("");
         availableBooks_author.setText("");
         availableBooks_genre.setText("");
         availableBooks_date.setValue(null);
         availableBooks_price.setText("");
-        
+
         getData.path = "";
-        
+
         availableBooks_imageView.setImage(null);
     }
-    
-    public void avaialableBooksInsertImage(){
-        
+
+    public void avaialableBooksInsertImage() {
+
         FileChooser open = new FileChooser();
         open.setTitle("Open Image File");
         open.getExtensionFilters().add(new ExtensionFilter("File Image", "*jpg", "*png"));
-        
+
         File file = open.showOpenDialog(main_form.getScene().getWindow());
-        
-        if(file != null){
+
+        if (file != null) {
             getData.path = file.getAbsolutePath();
-            
+
             image = new Image(file.toURI().toString(), 112, 137, false, true);
             availableBooks_imageView.setImage(image);
         }
-        
+
     }
-    
-    public ObservableList<bookData> availableBooksListData(){
-        
+
+    public ObservableList<bookData> availableBooksListData() {
+
         ObservableList<bookData> listData = FXCollections.observableArrayList();
         String sql = "SELECT * FROM book";
-        
+
         connect = database.connectDb();
-        
-        try{
+
+        try {
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
-            
+
             bookData bookD;
-            
-            while(result.next()){
+
+            while (result.next()) {
                 bookD = new bookData(result.getInt("book_id"), result.getString("title")
                         , result.getString("author"), result.getString("genre")
                         , result.getDate("pub_date"), result.getDouble("price")
                         , result.getString("image"));
-                
+
                 listData.add(bookD);
             }
-        }catch(Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return listData;
     }
-    
+
     private ObservableList<bookData> availableBooksList;
-    public void availableBooksShowListData(){
+
+    public void availableBooksShowListData() {
         availableBooksList = availableBooksListData();
-        
+
         availableBooks_col_bookID.setCellValueFactory(new PropertyValueFactory<>("bookId"));
         availableBooks_col_bookTItle.setCellValueFactory(new PropertyValueFactory<>("title"));
         availableBooks_col_author.setCellValueFactory(new PropertyValueFactory<>("author"));
         availableBooks_col_genre.setCellValueFactory(new PropertyValueFactory<>("genre"));
         availableBooks_col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         availableBooks_col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        
+
         availableBooks_tableView.setItems(availableBooksList);
     }
-    
-    public void availableBooksSelect(){
+
+    public void availableBooksSelect() {
         bookData bookD = availableBooks_tableView.getSelectionModel().getSelectedItem();
         int num = availableBooks_tableView.getSelectionModel().getSelectedIndex();
-        
-        if((num - 1) < -1){ return; }
-        
+
+        if ((num - 1) < -1) {
+            return;
+        }
+
         availableBooks_bookID.setText(String.valueOf(bookD.getBookId()));
         availableBooks_bookTitle.setText(bookD.getTitle());
         availableBooks_author.setText(bookD.getAuthor());
         availableBooks_genre.setText(bookD.getGenre());
         availableBooks_date.setValue(LocalDate.parse(String.valueOf(bookD.getDate())));
         availableBooks_price.setText(String.valueOf(bookD.getPrice()));
-        
+
         getData.path = bookD.getImage();
-        
+
         String uri = "file:" + bookD.getImage();
-        
+
         image = new Image(uri, 112, 137, false, true);
-        
+
         availableBooks_imageView.setImage(image);
     }
-    
+
     public void availableBooksSeach(){
-        
+
         FilteredList<bookData> filter = new FilteredList<>(availableBooksList, e -> true);
-        
+
         availableBooks_search.textProperty().addListener((Observable, oldValue, newValue) ->{
-            
+
             filter.setPredicate(predicateBookData -> {
-                
+
                 if(newValue == null || newValue.isEmpty()){
                     return true;
                 }
-                
+
                 String searchKey = newValue.toLowerCase();
-                
+
                 if(predicateBookData.getBookId().toString().contains(searchKey)){
                     return true;
                 }else if(predicateBookData.getTitle().toLowerCase().contains(searchKey)){
@@ -622,13 +641,14 @@ public class dashboardController implements Initializable{
                 }else return false;
             });
         });
-        
+
         SortedList<bookData> sortList = new SortedList(filter);
         sortList.comparatorProperty().bind(availableBooks_tableView.comparatorProperty());
         availableBooks_tableView.setItems(sortList);
-        
+
     }
-    
+
+
     private double totalP;
     public void purchaseAdd(){
         purchasecustomerId();
@@ -688,10 +708,6 @@ public class dashboardController implements Initializable{
     }
     
     public void purchasePay(){
-        
-        String sql = "INSERT INTO customer_info (customer_id, total, date) "
-                + "VALUES(?,?,?)";
-        
         connect = database.connectDb();
         
         try{
@@ -710,6 +726,8 @@ public class dashboardController implements Initializable{
                 Optional<ButtonType> option = alert.showAndWait();
                 
                 if(option.get().equals(ButtonType.OK)){
+                    String sql = "INSERT INTO customer_info (customer_id, total, date) "
+                            + "VALUES(?,?,?)";
                     prepare = connect.prepareStatement(sql);
                     prepare.setString(1, String.valueOf(customerId));
                     prepare.setString(2, String.valueOf(displayTotal));
