@@ -7,7 +7,7 @@ package librarymanagementsystem;
 
 import java.sql.Date;
 
-public class BookData {
+public class bookData {
     
     private Integer bookId;
     private String title;
@@ -17,7 +17,7 @@ public class BookData {
     private Double price;
     private String image;
     // MAKE SURE YOU FOLLOWED THE PARAMETERS THAT I PUT
-    public BookData(Integer bookId, String title, String author, String genre
+    public bookData(Integer bookId, String title, String author, String genre
             , Date date, Double price, String image){
         this.bookId = bookId;
         this.title = title;

@@ -7,7 +7,7 @@ package librarymanagementsystem;
 
 import java.sql.Date;
 
-public class CustomerData {
+public class customerData {
     
     private Integer customerId;
     private Integer bookId;
@@ -18,7 +18,7 @@ public class CustomerData {
     private Double price;
     private Date date;
     
-    public CustomerData(Integer customerId, Integer bookId, String title, String author
+    public customerData(Integer customerId, Integer bookId, String title, String author
             , String genre, Integer quantity, Double price, Date date){
         this.customerId = customerId;
         this.bookId = bookId;
