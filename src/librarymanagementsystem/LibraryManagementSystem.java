@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class  LibraryManagementSystem extends Application {
+public class LibraryManagementSystem extends Application {
     
     private double x = 0;
     private double y = 0;

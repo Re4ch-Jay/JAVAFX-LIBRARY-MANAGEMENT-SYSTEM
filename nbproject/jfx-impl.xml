@@ -227,7 +227,7 @@
             </or>
         </condition>
         <condition property="have-jdk7-css2bin-bug">
-            <!-- as of NB7.4 release date the external styles-to-bss converter is unreliable in all JDK7 versions before 7u40 (with exception of 7u14)-->
+            <!-- as of NB7.4 release date the external css-to-bss converter is unreliable in all JDK7 versions before 7u40 (with exception of 7u14)-->
             <and>
                 <contains string="${version-output}" substring="java version &quot;1.7"/>
                 <not><matches string="${version-output}" pattern="\bjava version &quot;1\.7\.0_(14|[4-9].)"/></not>

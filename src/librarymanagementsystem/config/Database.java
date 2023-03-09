@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Database {
-    
+
     public static Connection connectDb(){
         Env env = new Env(); // default port=3306; username="root"; password="root"
 
@@ -16,5 +16,5 @@ public class Database {
         }catch(Exception e){e.printStackTrace();}
         return null;
     }
-    
+
 }

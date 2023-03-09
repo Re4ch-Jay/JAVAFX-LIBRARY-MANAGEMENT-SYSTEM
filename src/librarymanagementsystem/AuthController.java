@@ -1,16 +1,15 @@
 
 package librarymanagementsystem;
 
-
 import java.io.IOException;
 import java.net.URL;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Base64;
 import java.util.ResourceBundle;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +27,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import librarymanagementsystem.config.Database;
 import librarymanagementsystem.helper.GetData;
-
 public class AuthController implements Initializable {
 
     @FXML
@@ -56,66 +54,10 @@ public class AuthController implements Initializable {
     private double x = 0;
     private double y = 0;
 
-    /*
     public void loginAdmin() {
         System.out.println("Login btn clicked");
 
         connect = Database.connectDb();
-
-        String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
-
-        try {
-            Alert alert;
-
-            prepare = connect.prepareStatement(sql);
-            prepare.setString(1, username.getText().trim());
-            prepare.setString(2, password.getText().trim());
-
-            result = prepare.executeQuery();
-
-            if (username.getText().isEmpty() || password.getText().isEmpty()) {
-                alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all blank fields");
-                alert.showAndWait();
-            } else {
-                if (result.next()) {
-                    // IF CORRECT USERNAME AND PASSWORD
-
-                    GetData.username = username.getText();
-
-                    alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Information Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successfully Login");
-                    alert.showAndWait();
-
-                    // TO HIDE YOUR LOGIN FORM
-                    loginBtn.getScene().getWindow().hide();
-
-                    switchToDashboard();
-
-                } else { // IF WRONG USERNAME OR PASSWORD
-                    alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Error Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Wrong Username/Password");
-                    alert.showAndWait();
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-    */
-
-    public void loginAdmin() {
-        System.out.println("Login btn clicked");
-
-        connect = database.connectDb();
 
         String sql = "SELECT * FROM admin WHERE username = ?";
 
@@ -143,7 +85,7 @@ public class AuthController implements Initializable {
                     if (storedEncryptedPass.equals(inputEncryptedPass)) {
                         // IF CORRECT PASSWORD
 
-                        getData.username = username.getText();
+                        GetData.username = username.getText();
 
                         alert = new Alert(AlertType.INFORMATION);
                         alert.setTitle("Information Message");
@@ -178,64 +120,10 @@ public class AuthController implements Initializable {
 
     }
 
-    /*
     public void signUpAdmin() throws IOException {
         System.out.println("Sign up btn clicked");
 
         connect = Database.connectDb();
-
-        String sql = "SELECT * FROM admin WHERE username = ?";
-
-        try {
-
-            Alert alert;
-
-            prepare = connect.prepareStatement(sql);
-            prepare.setString(1, username.getText());
-            result = prepare.executeQuery();
-
-            if (username.getText().isEmpty()) {
-                alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill in all the fill");
-                alert.show();
-            } else {
-                if (result.isBeforeFirst()) {
-                    System.out.println("This username is already existed");
-                    alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Error Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("This username is already existed");
-                    alert.show();
-                } else {
-                   // String encryptPass = encryptPassword(String.valueOf(password));
-                    prepare = connect.prepareStatement("INSERT INTO admin(username, password) VALUES(?, ?)");
-                    prepare.setString(1, username.getText().trim());
-                    prepare.setString(2, password.getText().trim());
-                    prepare.executeUpdate();
-
-                    System.out.println("Sign up success");
-                    alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Success Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successfully sign up");
-                    alert.showAndWait();
-
-                    switchToLogin();
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-    */
-    public void signUpAdmin() throws IOException {
-        System.out.println("Sign up btn clicked");
-
-        connect = database.connectDb();
 
         String sql = "SELECT * FROM admin WHERE username = ?";
 

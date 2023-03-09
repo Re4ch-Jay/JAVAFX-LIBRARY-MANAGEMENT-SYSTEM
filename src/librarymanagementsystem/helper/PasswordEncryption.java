@@ -1,4 +1,4 @@
-package librarymanagementsystem;
+package librarymanagementsystem.helper;
 
 import org.mindrot.jbcrypt.BCrypt;
 

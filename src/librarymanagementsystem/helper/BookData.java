@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package librarymanagementsystem.helper;
 
 import java.sql.Date;
@@ -12,6 +16,7 @@ public class BookData {
     private Date date;
     private Double price;
     private String image;
+    // MAKE SURE YOU FOLLOWED THE PARAMETERS THAT I PUT
     public BookData(Integer bookId, String title, String author, String genre
             , Date date, Double price, String image){
         this.bookId = bookId;
