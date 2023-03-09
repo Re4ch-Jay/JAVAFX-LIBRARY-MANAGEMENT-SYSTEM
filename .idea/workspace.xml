@@ -5,33 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e381b43a-e650-482d-a7a0-51bb2d62a1be" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/librarymanagementsystem/config/Env.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/jfx-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/jfx-impl.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/AuthDesign.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/LibraryManagementSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/LibraryManagementSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/bookData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/customerData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboard.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/dashboardDesign.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/database.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/getData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/loginDesign.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/libraryManagementSystem/librarymanagementsystem/signup.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/AuthDesign.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/fxml/AuthDesign.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/BookData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/helper/BookData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/CustomerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/helper/CustomerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/config/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/GetData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/helper/GetData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/LibraryManagementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/LibraryManagementSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/fxml/dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/dashboardDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/styles/dashboardDesign.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/loginDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/styles/loginDesign.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/librarymanagementsystem/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/librarymanagementsystem/fxml/signup.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
