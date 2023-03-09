@@ -41,6 +41,7 @@ import librarymanagementsystem.config.Database;
 import librarymanagementsystem.helper.BookData;
 import librarymanagementsystem.helper.CustomerData;
 import librarymanagementsystem.helper.GetData;
+import librarymanagementsystem.helper.PasswordEncryption;
 
 public class DashboardController implements Initializable{
 
@@ -1089,110 +1090,57 @@ public class DashboardController implements Initializable{
         return Base64.getEncoder().encodeToString(digest);
     }
 
-    public void updateAdmin() throws IOException {
-        System.out.println("Update btn clicked");
+    public void updateAdmin(){
+        System.out.println("update user profile click");
+        PasswordEncryption passwordEncryption = new PasswordEncryption();
+        String hashedPassword;
+        try {
+            hashedPassword = passwordEncryption.hashPassword(password_update.getText().trim());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
 
+        String sql = "UPDATE admin SET username = '" +username_update.getText()+"', password = '"+hashedPassword+"' WHERE username = '"+username.getText()+"'";
+
+        System.out.println(username_update.getText());
         connect = Database.connectDb();
 
-//        String uri = GetData.path;
-//        uri = uri.replace("\\", "\\\\");
-
-//        String sql = "UPDATE admin SET username = ";
-        String sql = "UPDATE admin SET username = '"
-                +username.getText()+"', password = '"+password.getText()
-                +"' WHERE admin_id = '";
-
-        try {
-
+        try{
             Alert alert;
 
-            prepare = connect.prepareStatement(sql);
-            prepare.setString(1, username_update.getText());
-            prepare.setString(2, password.getText());
-            result = prepare.executeQuery();
-
-            if (username_update.getText().isEmpty() || password_update.getText().isEmpty()) {
+            if(username_update.getText().isEmpty() || password_update.getText().isEmpty()){
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
-                alert.setContentText("Please fill in all the fill");
-                alert.show();
-            } else {
-                if (result.isBeforeFirst()) {
-                    System.out.println("This username already exists");
-                    alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Error Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("This username already exists");
-                    alert.show();
-                } else {
+                alert.setContentText("Please fill all blank fields");
+                alert.showAndWait();
+            }else{
+                alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to UPDATE admin with username: " + username.getText() + "?");
+                Optional<ButtonType> option = alert.showAndWait();
 
-                    alert = new Alert(AlertType.CONFIRMATION);
-                    alert.setTitle("Confirmation Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Are you sure you want to UPDATE Admin : " + username.getText() + "?");
-                    Optional<ButtonType> option = alert.showAndWait();
-                    if(option.get().equals(ButtonType.OK)) {
-                        statement = connect.createStatement();
-                        statement.executeUpdate(sql);
+                if(option.get().equals(ButtonType.OK)){
+                    statement = connect.createStatement();
+                    statement.executeUpdate(sql);
 
-                        System.out.println("Update success");
-                        alert = new Alert(AlertType.INFORMATION);
-                        alert.setTitle("Success Message");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Successfully updated");
-                        alert.showAndWait();
-
-                    }
-
-//                     Hash the password using SHA-256
-                    String hashedPassword = hashPassword(password_update.getText().trim());
-
-                    prepare = connect.prepareStatement("INSERT INTO admin(username, password) VALUES(?, ?)");
-                    prepare.setString(1, username_update.getText().trim());
-                    prepare.setString(2, hashedPassword);
-                    prepare.executeUpdate();
-
-                    System.out.println("Update success");
                     alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Success Message");
+                    alert.setTitle("Information Message");
                     alert.setHeaderText(null);
-                    alert.setContentText("Successfully updated");
+                    alert.setContentText("Successful Updated!");
                     alert.showAndWait();
 
-                    switchToDashboard();
-
+                    // TO BE UPDATED THE TABLEVIEW
+                    availableBooksShowListData();
+                    // CLEAR FIELDS
+                    availableBooksClear();
                 }
             }
-//            else{
-//                alert = new Alert(AlertType.CONFIRMATION);
-//                alert.setTitle("Confirmation Message");
-//                alert.setHeaderText(null);
-//                alert.setContentText("Are you sure you want to UPDATE Book ID: " + availableBooks_bookID.getText() + "?");
-//                Optional<ButtonType> option = alert.showAndWait();
-//
-//                if(option.get().equals(ButtonType.OK)){
-//                    statement = connect.createStatement();
-//                    statement.executeUpdate(sql);
-//
-//                    alert = new Alert(AlertType.INFORMATION);
-//                    alert.setTitle("Information Message");
-//                    alert.setHeaderText(null);
-//                    alert.setContentText("Successful Updated!");
-//                    alert.showAndWait();
-//
-//                    // TO BE UPDATED THE TABLEVIEW
-//                    availableBooksShowListData();
-//                    // CLEAR FIELDS
-//                    availableBooksClear();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        }catch(Exception e){e.printStackTrace();}
 
     }
 
-    private void switchToDashboard() {
-    }
+
 
 }

@@ -2,6 +2,10 @@ package librarymanagementsystem.helper;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+
 public class PasswordEncryption {
 
     // Set the number of bcrypt rounds to use
@@ -36,5 +40,11 @@ public class PasswordEncryption {
      */
     public static boolean checkPassword(String password, String storedPassword) {
         return BCrypt.checkpw(password, storedPassword);
+    }
+    public String hashPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(password.getBytes());
+        byte[] digest = md.digest();
+        return Base64.getEncoder().encodeToString(digest);
     }
 }

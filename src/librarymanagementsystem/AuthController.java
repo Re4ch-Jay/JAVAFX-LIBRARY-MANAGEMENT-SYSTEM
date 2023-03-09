@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import librarymanagementsystem.config.Database;
 import librarymanagementsystem.helper.GetData;
+import librarymanagementsystem.helper.PasswordEncryption;
 public class AuthController implements Initializable {
 
     @FXML
@@ -77,12 +78,15 @@ public class AuthController implements Initializable {
                 alert.showAndWait();
             } else {
                 if (result.next()) {
+
+                    PasswordEncryption passwordEncryption = new PasswordEncryption();
+                    String hashedPassword;
                     // IF USERNAME EXISTS
 
                     String storedEncryptedPass = result.getString("password");
-                    String inputEncryptedPass = hashPassword(password.getText().trim());
+                    hashedPassword = passwordEncryption.hashPassword(password.getText().trim());
 
-                    if (storedEncryptedPass.equals(inputEncryptedPass)) {
+                    if (storedEncryptedPass.equals(hashedPassword)) {
                         // IF CORRECT PASSWORD
 
                         GetData.username = username.getText();
@@ -151,7 +155,9 @@ public class AuthController implements Initializable {
                     alert.show();
                 } else {
                     // Hash the password using SHA-256
-                    String hashedPassword = hashPassword(password.getText().trim());
+                    PasswordEncryption passwordEncryption = new PasswordEncryption();
+                    String hashedPassword;
+                    hashedPassword = passwordEncryption.hashPassword(password.getText().trim());
 
                     prepare = connect.prepareStatement("INSERT INTO admin(username, password) VALUES(?, ?)");
                     prepare.setString(1, username.getText().trim());
@@ -175,12 +181,7 @@ public class AuthController implements Initializable {
 
     }
 
-    private String hashPassword(String password) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.update(password.getBytes());
-        byte[] digest = md.digest();
-        return Base64.getEncoder().encodeToString(digest);
-    }
+
 
     public void switchToDashboard () throws IOException {
         signInBtn.getScene().getWindow().hide();
