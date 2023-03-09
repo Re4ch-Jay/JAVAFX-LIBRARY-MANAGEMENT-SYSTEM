@@ -26,6 +26,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import librarymanagementsystem.config.Database;
+import librarymanagementsystem.helper.GetData;
 
 public class AuthController implements Initializable {
 
@@ -58,7 +60,7 @@ public class AuthController implements Initializable {
     public void loginAdmin() {
         System.out.println("Login btn clicked");
 
-        connect = database.connectDb();
+        connect = Database.connectDb();
 
         String sql = "SELECT * FROM admin WHERE username = ? and password = ?";
 
@@ -81,7 +83,7 @@ public class AuthController implements Initializable {
                 if (result.next()) {
                     // IF CORRECT USERNAME AND PASSWORD
 
-                    getData.username = username.getText();
+                    GetData.username = username.getText();
 
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
@@ -180,7 +182,7 @@ public class AuthController implements Initializable {
     public void signUpAdmin() throws IOException {
         System.out.println("Sign up btn clicked");
 
-        connect = database.connectDb();
+        connect = Database.connectDb();
 
         String sql = "SELECT * FROM admin WHERE username = ?";
 
@@ -296,7 +298,7 @@ public class AuthController implements Initializable {
         signInBtn.getScene().getWindow().hide();
 
         // LINK YOUR DASHBOARD FORM : )
-        Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/dashboard.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
 
@@ -320,7 +322,7 @@ public class AuthController implements Initializable {
         signInBtn.getScene().getWindow().hide();
 
         // LINK YOUR DASHBOARD FORM : )
-        Parent root = FXMLLoader.load(getClass().getResource("signup.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/signup.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
 
@@ -345,7 +347,7 @@ public class AuthController implements Initializable {
         loginBtn.getScene().getWindow().hide();
 
         // LINK YOUR DASHBOARD FORM : )
-        Parent root = FXMLLoader.load(getClass().getResource("AuthDesign.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/AuthDesign.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
 

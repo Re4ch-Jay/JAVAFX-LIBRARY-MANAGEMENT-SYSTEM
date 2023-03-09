@@ -7,8 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="library" name="mysql-connector-j-8.0.31" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" name="jBCrypt-0.4.1" level="project" />
+=======
+    <orderEntry type="library" name="lib" level="project" />
+>>>>>>> b62a8145e126492c581a7975c55790f693c795e0
   </component>
 </module>
