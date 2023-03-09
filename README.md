@@ -1,3 +1,9 @@
+# JAVAFX-LIBRARY-MANAGEMENT-SYSTEM
+LMS with JavaFX and MySQL
+
+
+```
+
 create database book;
 use book;
 create table admin(id int primary key auto_increment, username varchar(255), password varchar(255));
@@ -68,3 +74,4 @@ VALUES
 (9, 11.99, '2023-03-01'),
 (10, 67.80, '2023-02-28');
 
+```
