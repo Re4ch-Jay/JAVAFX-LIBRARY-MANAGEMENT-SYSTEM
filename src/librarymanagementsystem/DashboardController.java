@@ -608,41 +608,24 @@ public class DashboardController implements Initializable{
         
         availableBooks_imageView.setImage(image);
     }
-    
-    public void availableBooksSeach(){
-        
-        FilteredList<BookData> filter = new FilteredList<>(availableBooksList, e -> true);
-        
-        availableBooks_search.textProperty().addListener((Observable, oldValue, newValue) ->{
-            
-            filter.setPredicate(predicateBookData -> {
-                
-                if(newValue == null || newValue.isEmpty()){
-                    return true;
-                }
-                
-                String searchKey = newValue.toLowerCase();
-                
-                if(predicateBookData.getBookId().toString().contains(searchKey)){
-                    return true;
-                }else if(predicateBookData.getTitle().toLowerCase().contains(searchKey)){
-                    return true;
-                }else if(predicateBookData.getAuthor().toLowerCase().contains(searchKey)){
-                    return true;
-                }else if(predicateBookData.getGenre().toLowerCase().contains(searchKey)){
-                    return true;
-                }else if(predicateBookData.getDate().toString().contains(searchKey)){
-                    return true;
-                }else if(predicateBookData.getPrice().toString().contains(searchKey)){
-                    return true;
-                }else return false;
-            });
-        });
-        
-        SortedList<BookData> sortList = new SortedList(filter);
-        sortList.comparatorProperty().bind(availableBooks_tableView.comparatorProperty());
-        availableBooks_tableView.setItems(sortList);
-        
+
+
+    /**
+     * Author: Phirom
+     */
+    public void availableBooksSeach() {
+        String searchQuery = availableBooks_search.getText().toLowerCase();
+        ObservableList<BookData> filteredBooks = FXCollections.observableArrayList();
+
+        for (BookData book : availableBooksList) {
+            if (book.getTitle().toLowerCase().contains(searchQuery) ||
+                    book.getAuthor().toLowerCase().contains(searchQuery) ||
+                    book.getBookId().toString().toLowerCase().contains(searchQuery)) {
+                filteredBooks.add(book);
+            }
+        }
+
+        availableBooks_tableView.setItems(filteredBooks);
     }
     
     private double totalP;
