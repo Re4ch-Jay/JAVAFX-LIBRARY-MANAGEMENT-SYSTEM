@@ -2,7 +2,7 @@
 LMS with JavaFX and MySQL
 
 
-```
+```sql
 
 create database book;
 use book;
