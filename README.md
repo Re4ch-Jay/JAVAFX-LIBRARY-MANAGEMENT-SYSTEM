@@ -42,6 +42,7 @@ VALUES
 
 create table customer(
   id int primary key auto_increment,
+  customer_id int,
     book_id int,
     title varchar(255),
     author varchar(255),
