@@ -119,9 +119,10 @@
                                                 <Font name="Arial Bold" size="20.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="username_update" layoutX="50.0" layoutY="173.0"  prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@../styles/loginDesign.css" />
-                                          <PasswordField fx:id="password_update" layoutX="50.0" layoutY="219.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@../styles/loginDesign.css" />
-                                          <Button fx:id="updateBtn" layoutX="50.0" layoutY="277.0" mnemonicParsing="false" onAction="#updateAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@../styles/loginDesign.css" text="UPDATE ADMIN" />
+                                          <TextField fx:id="username_update" layoutX="50.0" layoutY="173.0"  prefHeight="30.0" prefWidth="220.0" promptText="New Username" styleClass="textfield" stylesheets="@../styles/loginDesign.css" />
+                                          <PasswordField fx:id="password_update" layoutX="50.0" layoutY="219.0" prefHeight="30.0" prefWidth="220.0" promptText="New Password" styleClass="textfield" stylesheets="@../styles/loginDesign.css" />
+                                          <PasswordField fx:id="confirm_password_update" layoutX="50.0" layoutY="265.0" prefHeight="30.0" prefWidth="220.0" promptText="Confirm Password" styleClass="textfield" stylesheets="@../styles/loginDesign.css" />
+                                          <Button fx:id="updateBtn" layoutX="50.0" layoutY="323.0" mnemonicParsing="false" onAction="#updateAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@../styles/loginDesign.css" text="UPDATE ADMIN" />
                                        </children>
                                     </AnchorPane>
                                  </children>

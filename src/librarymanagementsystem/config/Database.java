@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 public class Database {
 
     public static Connection connectDb(){
-        Env env = new Env(); // default port=3306; username="root"; password="root"
+        Env env = new Env("root", "root", "3306"); // default port=3306; username="root"; password="root"
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
