@@ -55,6 +55,8 @@ public class DashboardController implements Initializable{
     @FXML
     private PasswordField password_update;
     @FXML
+    private TextField confirm_password_update;
+    @FXML
     private PasswordField password;
 
     @FXML
@@ -1087,39 +1089,51 @@ public class DashboardController implements Initializable{
         try{
             Alert alert;
 
-            if(username_update.getText().isEmpty() || password_update.getText().isEmpty()){
+            if(username_update.getText().isEmpty() || password_update.getText().isEmpty() || confirm_password_update.getText().isEmpty()){
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
             }else{
-                alert = new Alert(AlertType.CONFIRMATION);
-                alert.setTitle("Confirmation Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Are you sure you want to UPDATE admin with username: " + username.getText() + "?");
-                Optional<ButtonType> option = alert.showAndWait();
-
-                if(option.get().equals(ButtonType.OK)){
-                    statement = connect.createStatement();
-                    statement.executeUpdate(sql);
-
-                    alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Information Message");
+                String confHashedPassword;
+                try {
+                    confHashedPassword = passwordEncryption.hashPassword(confirm_password_update.getText().trim());
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                }
+                if(hashedPassword.equals(confHashedPassword)){
+                    alert = new Alert(AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation Message");
                     alert.setHeaderText(null);
-                    alert.setContentText("Successful Updated!");
-                    alert.showAndWait();
+                    alert.setContentText("Are you sure you want to UPDATE admin with username: " + username.getText() + "?");
+                    Optional<ButtonType> option = alert.showAndWait();
 
-                    // TO BE UPDATED THE TABLEVIEW
-                    availableBooksShowListData();
-                    // CLEAR FIELDS
-                    availableBooksClear();
+                    if(option.get().equals(ButtonType.OK)){
+                        statement = connect.createStatement();
+                        statement.executeUpdate(sql);
+
+                        alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle("Information Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Successful Updated!");
+                        alert.showAndWait();
+
+                        // TO BE UPDATED THE TABLEVIEW
+                        availableBooksShowListData();
+                        // CLEAR FIELDS
+                        availableBooksClear();
+                    }
+                }else{
+                    alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Password doesn't match");
+                    alert.showAndWait();
                 }
             }
         }catch(Exception e){e.printStackTrace();}
-
+        logout();
     }
-
-
 
 }

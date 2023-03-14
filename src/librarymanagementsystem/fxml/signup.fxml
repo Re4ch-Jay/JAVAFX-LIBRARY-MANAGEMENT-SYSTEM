@@ -38,8 +38,9 @@
                         </Label>
                         <TextField fx:id="username" layoutX="50.0" layoutY="173.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@../styles/loginDesign.css" />
                         <PasswordField fx:id="password" layoutX="50.0" layoutY="219.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@../styles/loginDesign.css" />
-                        <Button fx:id="signInBtn" layoutX="50.0" layoutY="277.0" mnemonicParsing="false" onAction="#signUpAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@../styles/loginDesign.css" text="SIGN UP" />
-                        <Button fx:id="loginBtn" layoutX="50.0" layoutY="350.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="40.0" prefWidth="220.0" styleClass="signIn-btn" stylesheets="@../styles/loginDesign.css" text="ALREADY REGISTER?" />
+                        <PasswordField fx:id="confirm_password" layoutX="50.0" layoutY="265.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Confirm Password" styleClass="textfield" stylesheets="@../styles/loginDesign.css" />
+                        <Button fx:id="signInBtn" layoutX="50.0" layoutY="323.0" mnemonicParsing="false" onAction="#signUpAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@../styles/loginDesign.css" text="SIGN UP" />
+                        <Button fx:id="loginBtn" layoutX="50.0" layoutY="373.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="40.0" prefWidth="220.0" styleClass="signIn-btn" stylesheets="@../styles/loginDesign.css" text="ALREADY REGISTER?" />
                         <Button fx:id="close" layoutX="270.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="51.0" styleClass="close" stylesheets="@../styles/loginDesign.css" text="Close" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                         </Button>
                     </children>

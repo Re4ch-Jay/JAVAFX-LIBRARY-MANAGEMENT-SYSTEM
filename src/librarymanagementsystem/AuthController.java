@@ -39,6 +39,8 @@ public class AuthController implements Initializable {
 
     @FXML
     private PasswordField password;
+    @FXML
+    private PasswordField confirm_password;
 
     @FXML
     private Button loginBtn;
@@ -156,22 +158,30 @@ public class AuthController implements Initializable {
                 } else {
                     // Hash the password using SHA-256
                     PasswordEncryption passwordEncryption = new PasswordEncryption();
-                    String hashedPassword;
+                    String hashedPassword, confHashesPassword;
                     hashedPassword = passwordEncryption.hashPassword(password.getText().trim());
+                    confHashesPassword = passwordEncryption.hashPassword(confirm_password.getText().trim());
+                    if(hashedPassword.equals(confHashesPassword)){
+                        prepare = connect.prepareStatement("INSERT INTO admin(username, password) VALUES(?, ?)");
+                        prepare.setString(1, username.getText().trim());
+                        prepare.setString(2, hashedPassword);
+                        prepare.executeUpdate();
 
-                    prepare = connect.prepareStatement("INSERT INTO admin(username, password) VALUES(?, ?)");
-                    prepare.setString(1, username.getText().trim());
-                    prepare.setString(2, hashedPassword);
-                    prepare.executeUpdate();
+                        System.out.println("Sign up success");
+                        alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle("Success Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Successfully signed up");
+                        alert.showAndWait();
 
-                    System.out.println("Sign up success");
-                    alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Success Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successfully signed up");
-                    alert.showAndWait();
-
-                    switchToLogin();
+                        switchToLogin();
+                    }else{
+                        alert = new Alert(AlertType.ERROR);
+                        alert.setTitle("Error Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Password doesn't match");
+                        alert.showAndWait();
+                    }
                 }
             }
 
