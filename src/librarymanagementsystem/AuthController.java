@@ -141,7 +141,7 @@ public class AuthController implements Initializable {
             prepare.setString(1, username.getText());
             result = prepare.executeQuery();
 
-            if (username.getText().isEmpty()) {
+            if (username.getText().isEmpty() || password.getText().isEmpty() || confirm_password.getText().isEmpty()) {
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
