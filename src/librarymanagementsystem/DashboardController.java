@@ -1,31 +1,17 @@
 
 package librarymanagementsystem;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.Base64;
-import java.util.Date;
-import java.util.Optional;
-import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.*;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,10 +24,19 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import librarymanagementsystem.config.Database;
-import librarymanagementsystem.helper.BookData;
-import librarymanagementsystem.helper.CustomerData;
-import librarymanagementsystem.helper.GetData;
-import librarymanagementsystem.helper.PasswordEncryption;
+import librarymanagementsystem.helper.*;
+
+import java.io.File;
+import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable{
 
@@ -363,14 +358,9 @@ public class DashboardController implements Initializable{
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
                     || GetData.path == null || GetData.path == ""){
-                alert = new Alert(AlertType.ERROR);
-                dialog = alert.getDialogPane();
-                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                dialog.getStyleClass().add("dialog");
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all blank fields");
-                alert.showAndWait();
+
+                CustomAlert customAlert = new CustomAlert();
+                customAlert.errorAlert("Please fill all blank fields");
             }else{
                 // CHECK IF BOOK ID IS ALREADY EXIST
                 String checkData = "SELECT book_id FROM book WHERE book_id = '"
@@ -401,15 +391,9 @@ public class DashboardController implements Initializable{
                     prepare.setString(7, uri);
                     
                     prepare.executeUpdate();
-                    
-                    alert = new Alert(AlertType.INFORMATION);
-                    dialog = alert.getDialogPane();
-                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                    dialog.getStyleClass().add("dialog");
-                    alert.setTitle("Information Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successfully Added!");
-                    alert.showAndWait();
+
+                    CustomAlert customAlert = new CustomAlert();
+                    customAlert.infoAlert("Successfully Added!");
                     
                     // TO BE UPDATED THE TABLEVIEW 
                     availableBooksShowListData();
@@ -446,14 +430,10 @@ public class DashboardController implements Initializable{
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
                     || GetData.path == null || GetData.path == ""){
-                alert = new Alert(AlertType.ERROR);
-                dialog = alert.getDialogPane();
-                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                dialog.getStyleClass().add("dialog");
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all blank fields");
-                alert.showAndWait();
+
+                CustomAlert customAlert = new CustomAlert();
+                customAlert.errorAlert("Please fill all blank fields");
+
             }else{
                 alert = new Alert(AlertType.CONFIRMATION);
                 dialog = alert.getDialogPane();
@@ -467,15 +447,9 @@ public class DashboardController implements Initializable{
                 if(option.get().equals(ButtonType.OK)){
                     statement = connect.createStatement();
                     statement.executeUpdate(sql);
-                    
-                    alert = new Alert(AlertType.INFORMATION);
-                    dialog = alert.getDialogPane();
-                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                    dialog.getStyleClass().add("dialog");
-                    alert.setTitle("Information Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successful Updated!");
-                    alert.showAndWait();
+
+                    CustomAlert customAlert = new CustomAlert();
+                    customAlert.infoAlert("Successful Updated!");
                     
                     // TO BE UPDATED THE TABLEVIEW 
                     availableBooksShowListData();
@@ -504,14 +478,8 @@ public class DashboardController implements Initializable{
                     || availableBooks_date.getValue() == null
                     || availableBooks_price.getText().isEmpty()
                     || GetData.path == null || GetData.path == ""){
-                alert = new Alert(AlertType.ERROR);
-                dialog = alert.getDialogPane();
-                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                dialog.getStyleClass().add("dialog");
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all blank fields");
-                alert.showAndWait();
+                CustomAlert customAlert = new CustomAlert();
+                customAlert.errorAlert("Please fill all blank fields");
             }else{
                 alert = new Alert(AlertType.CONFIRMATION);
                 dialog = alert.getDialogPane();
@@ -526,15 +494,9 @@ public class DashboardController implements Initializable{
                     statement = connect.createStatement();
 
                     statement.executeUpdate(sql);
-                    
-                    alert = new Alert(AlertType.INFORMATION);
-                    dialog = alert.getDialogPane();
-                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                    dialog.getStyleClass().add("dialog");
-                    alert.setTitle("Information Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successful Delete!");
-                    alert.showAndWait();
+
+                    CustomAlert customAlert = new CustomAlert();
+                    customAlert.infoAlert("Successful Delete!");
                     
                     // TO BE UPDATED THE TABLEVIEW 
                     availableBooksShowListData();
@@ -670,14 +632,8 @@ public class DashboardController implements Initializable{
             
             if(purchase_bookTitle.getSelectionModel().getSelectedItem() == null
                     || purchase_bookID.getSelectionModel().getSelectedItem() == null){
-                alert = new Alert(AlertType.ERROR);
-                dialog = alert.getDialogPane();
-                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                dialog.getStyleClass().add("dialog");
-                alert.setTitle("Error message");
-                alert.setHeaderText(null);
-                alert.setContentText("Please choose book first");
-                alert.showAndWait();
+                CustomAlert customAlert = new CustomAlert();
+                customAlert.errorAlert("Please choose book first");
             }else{
             
                 prepare = connect.prepareStatement(sql);
@@ -727,14 +683,8 @@ public class DashboardController implements Initializable{
         try{
             Alert alert;
             if(displayTotal == 0){
-                alert = new Alert(AlertType.ERROR);
-                dialog = alert.getDialogPane();
-                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                dialog.getStyleClass().add("dialog");
-                alert.setTitle("Error message");
-                alert.setHeaderText(null);
-                alert.setContentText("Invalid :3");
-                alert.showAndWait();
+                CustomAlert customAlert = new CustomAlert();
+                customAlert.errorAlert("Invalid");
             }else{
                 alert = new Alert(AlertType.CONFIRMATION);
                 dialog = alert.getDialogPane();
@@ -756,15 +706,9 @@ public class DashboardController implements Initializable{
                     prepare.setString(3, String.valueOf(sqlDate));
 
                     prepare.executeUpdate();
-                    
-                    alert = new Alert(AlertType.INFORMATION);
-                    dialog = alert.getDialogPane();
-                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                    dialog.getStyleClass().add("dialog");
-                    alert.setTitle("Information message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successful!");
-                    alert.showAndWait();
+
+                    CustomAlert customAlert = new CustomAlert();
+                    customAlert.infoAlert("Successful!");
                 }
             }
         }catch(Exception e){e.printStackTrace();}
@@ -1131,15 +1075,17 @@ public class DashboardController implements Initializable{
             Alert alert;
 
             if(username_update.getText().isEmpty() || password_update.getText().isEmpty() || confirm_password_update.getText().isEmpty()){
-                alert = new Alert(AlertType.ERROR);
-                dialog = alert.getDialogPane();
-                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                dialog.getStyleClass().add("dialog");
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all blank fields");
-                alert.showAndWait();
+                CustomAlert customAlert = new CustomAlert();
+                customAlert.errorAlert("Please fill all blank fields");
             }else{
+                Validation validation = new Validation();
+                boolean validPassword = validation.isValidPassword(password_update.getText());
+                if(!validPassword) {
+                    CustomAlert customAlert = new CustomAlert();
+                    customAlert.errorAlert("The password must be strong");
+                    return;
+                }
+
                 String confHashedPassword;
                 try {
                     confHashedPassword = passwordEncryption.hashPassword(confirm_password_update.getText().trim());
@@ -1160,14 +1106,8 @@ public class DashboardController implements Initializable{
                         statement = connect.createStatement();
                         statement.executeUpdate(sql);
 
-                        alert = new Alert(AlertType.INFORMATION);
-                        dialog = alert.getDialogPane();
-                        dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                        dialog.getStyleClass().add("dialog");
-                        alert.setTitle("Information Message");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Successful Updated!");
-                        alert.showAndWait();
+                        CustomAlert customAlert = new CustomAlert();
+                        customAlert.infoAlert("Successful Updated!");
 
                         // TO BE UPDATED THE TABLEVIEW
                         availableBooksShowListData();
@@ -1176,14 +1116,8 @@ public class DashboardController implements Initializable{
                         logout();
                     }
                 }else{
-                    alert = new Alert(AlertType.ERROR);
-                    dialog = alert.getDialogPane();
-                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                    dialog.getStyleClass().add("dialog");
-                    alert.setTitle("Error Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Password doesn't match");
-                    alert.showAndWait();
+                    CustomAlert customAlert = new CustomAlert();
+                    customAlert.errorAlert("Password doesn't match");
                 }
             }
         }catch(Exception e){e.printStackTrace();}

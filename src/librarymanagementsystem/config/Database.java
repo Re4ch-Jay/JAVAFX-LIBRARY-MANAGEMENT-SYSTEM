@@ -6,12 +6,16 @@ import java.sql.DriverManager;
 
 public class Database {
 
+    /**
+     * @return Connection if success otherwise null
+     */
     public static Connection connectDb(){
-        Env env = new Env("root", "root", "3306"); // default port=3306; username="root"; password="root"
+        // default username="root"; password="root"; port="3306"
+        Env env = new Env("root", "root", "3306");
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:"+env.getPort()+"/book", env.getUsername(), env.getPassword()); // address, database username, database password
+            Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:"+env.getPort()+"/book", env.getUsername(), env.getPassword());
             return connect;
         }catch(Exception e){e.printStackTrace();}
         return null;

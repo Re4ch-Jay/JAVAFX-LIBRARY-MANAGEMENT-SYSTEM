@@ -17,7 +17,7 @@
                 <AnchorPane prefHeight="424.0" prefWidth="320.0" styleClass="left-form" stylesheets="@../styles/loginDesign.css">
                     <children>
                         <!--                  <FontAwesomeIcon fill="WHITE" glyphName="BOOK" layoutX="104.0" layoutY="194.0" size="10em" />-->
-                        <Label layoutX="32.0" layoutY="266.0" text="Library Management System" textFill="WHITE">
+                        <Label layoutX="72.0" layoutY="266.0" text="Beyond The Cover" textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="20.0" />
                             </font>

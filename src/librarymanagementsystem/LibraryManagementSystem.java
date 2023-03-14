@@ -5,9 +5,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import librarymanagementsystem.helper.IconLogo;
 
 public class LibraryManagementSystem extends Application {
     
@@ -17,7 +19,8 @@ public class LibraryManagementSystem extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(LibraryManagementSystem.class.getResource("fxml/AuthDesign.fxml"));
-        
+        Image icon = new Image(IconLogo.icon);
+        stage.getIcons().add(icon);
         Scene scene = new Scene(root);
         
         root.setOnMousePressed((MouseEvent event) ->{

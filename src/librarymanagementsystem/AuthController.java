@@ -1,30 +1,29 @@
 
 package librarymanagementsystem;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ResourceBundle;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import librarymanagementsystem.config.Database;
+import librarymanagementsystem.helper.CustomAlert;
 import librarymanagementsystem.helper.GetData;
 import librarymanagementsystem.helper.PasswordEncryption;
+import librarymanagementsystem.helper.Validation;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ResourceBundle;
+
 public class AuthController implements Initializable {
     PasswordEncryption passwordEncryption = new PasswordEncryption();
 
@@ -73,14 +72,8 @@ public class AuthController implements Initializable {
             result = prepare.executeQuery();
 
             if (username.getText().isEmpty() || password.getText().isEmpty()) {
-                alert = new Alert(AlertType.ERROR);
-                dialog = alert.getDialogPane();
-                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                dialog.getStyleClass().add("dialog");
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all blank fields");
-                alert.showAndWait();
+                CustomAlert customAlert = new CustomAlert();
+                customAlert.errorAlert("Please fill in all the blank fields");
             } else {
                 if (result.next()) {
 
@@ -94,15 +87,8 @@ public class AuthController implements Initializable {
                         // IF CORRECT PASSWORD
 
                         GetData.username = username.getText();
-
-                        alert = new Alert(AlertType.INFORMATION);
-                        dialog = alert.getDialogPane();
-                        dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                        dialog.getStyleClass().add("dialog");
-                        alert.setTitle("Information Message");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Successfully Login");
-                        alert.showAndWait();
+                        CustomAlert customAlert = new CustomAlert();
+                        customAlert.infoAlert("Successfully Login");
 
                         // TO HIDE YOUR LOGIN FORM
                         loginBtn.getScene().getWindow().hide();
@@ -110,24 +96,12 @@ public class AuthController implements Initializable {
                         switchToDashboard();
 
                     } else { // IF WRONG PASSWORD
-                        alert = new Alert(AlertType.ERROR);
-                        dialog = alert.getDialogPane();
-                        dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                        dialog.getStyleClass().add("dialog");
-                        alert.setTitle("Error Message");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Wrong Password");
-                        alert.showAndWait();
+                        CustomAlert customAlert = new CustomAlert();
+                        customAlert.errorAlert("Wrong Password");
                     }
                 } else { // IF WRONG USERNAME
-                    alert = new Alert(AlertType.ERROR);
-                    dialog = alert.getDialogPane();
-                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                    dialog.getStyleClass().add("dialog");
-                    alert.setTitle("Error Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Wrong Username");
-                    alert.showAndWait();
+                    CustomAlert customAlert = new CustomAlert();
+                    customAlert.errorAlert("Wrong Username");
                 }
             }
 
@@ -153,23 +127,21 @@ public class AuthController implements Initializable {
             result = prepare.executeQuery();
 
             if (username.getText().isEmpty() || password.getText().isEmpty() || confirm_password.getText().isEmpty()) {
-                alert = new Alert(AlertType.ERROR);
-                dialog = alert.getDialogPane();
-                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                dialog.getStyleClass().add("dialog");
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill in all the fill");
-                alert.show();
+                CustomAlert customAlert = new CustomAlert();
+                customAlert.errorAlert("Please fill all blank fields");
             } else {
                 if (result.isBeforeFirst()) {
                     System.out.println("This username already exists");
-                    alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Error Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("This username already exists");
-                    alert.show();
+                    CustomAlert customAlert = new CustomAlert();
+                    customAlert.errorAlert("The username is already existed");
                 } else {
+                    Validation validation = new Validation();
+                    boolean validPassword = validation.isValidPassword(password.getText());
+                    if(!validPassword) {
+                        CustomAlert customAlert = new CustomAlert();
+                        customAlert.errorAlert("The password must be strong");
+                        return;
+                    }
                     // Hash the password using SHA-256
                     PasswordEncryption passwordEncryption = new PasswordEncryption();
                     String hashedPassword, confHashesPassword;
@@ -182,25 +154,13 @@ public class AuthController implements Initializable {
                         prepare.executeUpdate();
 
                         System.out.println("Sign up success");
-                        alert = new Alert(AlertType.INFORMATION);
-                        dialog = alert.getDialogPane();
-                        dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                        dialog.getStyleClass().add("dialog");
-                        alert.setTitle("Success Message");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Successfully signed up");
-                        alert.showAndWait();
+                        CustomAlert customAlert = new CustomAlert();
+                        customAlert.infoAlert("Successfully Sign Up");
 
                         switchToLogin();
                     }else{
-                        alert = new Alert(AlertType.ERROR);
-                        dialog = alert.getDialogPane();
-                        dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
-                        dialog.getStyleClass().add("dialog");
-                        alert.setTitle("Error Message");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Password doesn't match");
-                        alert.showAndWait();
+                        CustomAlert customAlert = new CustomAlert();
+                        customAlert.errorAlert("Password doesn't match");
                     }
                 }
             }
