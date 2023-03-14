@@ -16,11 +16,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -55,6 +52,8 @@ public class AuthController implements Initializable {
     private PreparedStatement prepare;
     private ResultSet result;
 
+    private DialogPane dialog;
+
     private double x = 0;
     private double y = 0;
 
@@ -75,6 +74,9 @@ public class AuthController implements Initializable {
 
             if (username.getText().isEmpty() || password.getText().isEmpty()) {
                 alert = new Alert(AlertType.ERROR);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
@@ -94,6 +96,9 @@ public class AuthController implements Initializable {
                         GetData.username = username.getText();
 
                         alert = new Alert(AlertType.INFORMATION);
+                        dialog = alert.getDialogPane();
+                        dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                        dialog.getStyleClass().add("dialog");
                         alert.setTitle("Information Message");
                         alert.setHeaderText(null);
                         alert.setContentText("Successfully Login");
@@ -106,6 +111,9 @@ public class AuthController implements Initializable {
 
                     } else { // IF WRONG PASSWORD
                         alert = new Alert(AlertType.ERROR);
+                        dialog = alert.getDialogPane();
+                        dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                        dialog.getStyleClass().add("dialog");
                         alert.setTitle("Error Message");
                         alert.setHeaderText(null);
                         alert.setContentText("Wrong Password");
@@ -113,6 +121,9 @@ public class AuthController implements Initializable {
                     }
                 } else { // IF WRONG USERNAME
                     alert = new Alert(AlertType.ERROR);
+                    dialog = alert.getDialogPane();
+                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                    dialog.getStyleClass().add("dialog");
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Wrong Username");
@@ -141,8 +152,11 @@ public class AuthController implements Initializable {
             prepare.setString(1, username.getText());
             result = prepare.executeQuery();
 
-            if (username.getText().isEmpty()) {
+            if (username.getText().isEmpty() || password.getText().isEmpty() || confirm_password.getText().isEmpty()) {
                 alert = new Alert(AlertType.ERROR);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill in all the fill");
@@ -169,6 +183,9 @@ public class AuthController implements Initializable {
 
                         System.out.println("Sign up success");
                         alert = new Alert(AlertType.INFORMATION);
+                        dialog = alert.getDialogPane();
+                        dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                        dialog.getStyleClass().add("dialog");
                         alert.setTitle("Success Message");
                         alert.setHeaderText(null);
                         alert.setContentText("Successfully signed up");
@@ -177,6 +194,9 @@ public class AuthController implements Initializable {
                         switchToLogin();
                     }else{
                         alert = new Alert(AlertType.ERROR);
+                        dialog = alert.getDialogPane();
+                        dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                        dialog.getStyleClass().add("dialog");
                         alert.setTitle("Error Message");
                         alert.setHeaderText(null);
                         alert.setContentText("Password doesn't match");

@@ -1,0 +1,20 @@
+.button {
+    -fx-cursor: hand;
+    -fx-background-radius: 50;
+    -fx-background-color:linear-gradient(to top right,  #7996fc, #264dd4);
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color:linear-gradient(to top right,  #7996fc, #324896);
+    -fx-text-fill: white;
+}
+
+.dialog {
+    -fx-background-color:linear-gradient(to top right,  #5e1357, #c74cbb);
+}
+
+.dialog > *.content.label {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+}

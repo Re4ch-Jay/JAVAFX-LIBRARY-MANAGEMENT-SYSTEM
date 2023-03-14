@@ -152,6 +152,8 @@ public class DashboardController implements Initializable{
     @FXML
     private TableView<BookData> availableBooks_tableView;
 
+    private DialogPane dialog;
+
     @FXML
     private TableColumn<BookData, String> availableBooks_col_bookID;
 
@@ -362,6 +364,9 @@ public class DashboardController implements Initializable{
                     || availableBooks_price.getText().isEmpty()
                     || GetData.path == null || GetData.path == ""){
                 alert = new Alert(AlertType.ERROR);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
@@ -398,6 +403,9 @@ public class DashboardController implements Initializable{
                     prepare.executeUpdate();
                     
                     alert = new Alert(AlertType.INFORMATION);
+                    dialog = alert.getDialogPane();
+                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                    dialog.getStyleClass().add("dialog");
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successfully Added!");
@@ -439,12 +447,18 @@ public class DashboardController implements Initializable{
                     || availableBooks_price.getText().isEmpty()
                     || GetData.path == null || GetData.path == ""){
                 alert = new Alert(AlertType.ERROR);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
             }else{
                 alert = new Alert(AlertType.CONFIRMATION);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Confirmation Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Are you sure you want to UPDATE Book ID: " + availableBooks_bookID.getText() + "?");
@@ -455,6 +469,9 @@ public class DashboardController implements Initializable{
                     statement.executeUpdate(sql);
                     
                     alert = new Alert(AlertType.INFORMATION);
+                    dialog = alert.getDialogPane();
+                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                    dialog.getStyleClass().add("dialog");
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successful Updated!");
@@ -488,12 +505,18 @@ public class DashboardController implements Initializable{
                     || availableBooks_price.getText().isEmpty()
                     || GetData.path == null || GetData.path == ""){
                 alert = new Alert(AlertType.ERROR);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
             }else{
                 alert = new Alert(AlertType.CONFIRMATION);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Confirmation Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Are you sure you want to DELETE Book ID: " + availableBooks_bookID.getText() + "?");
@@ -505,6 +528,9 @@ public class DashboardController implements Initializable{
                     statement.executeUpdate(sql);
                     
                     alert = new Alert(AlertType.INFORMATION);
+                    dialog = alert.getDialogPane();
+                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                    dialog.getStyleClass().add("dialog");
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successful Delete!");
@@ -645,6 +671,9 @@ public class DashboardController implements Initializable{
             if(purchase_bookTitle.getSelectionModel().getSelectedItem() == null
                     || purchase_bookID.getSelectionModel().getSelectedItem() == null){
                 alert = new Alert(AlertType.ERROR);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Error message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please choose book first");
@@ -699,12 +728,18 @@ public class DashboardController implements Initializable{
             Alert alert;
             if(displayTotal == 0){
                 alert = new Alert(AlertType.ERROR);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Error message");
                 alert.setHeaderText(null);
                 alert.setContentText("Invalid :3");
                 alert.showAndWait();
             }else{
                 alert = new Alert(AlertType.CONFIRMATION);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Confirmation message");
                 alert.setHeaderText(null);
                 alert.setContentText("Are you sure?");
@@ -723,6 +758,9 @@ public class DashboardController implements Initializable{
                     prepare.executeUpdate();
                     
                     alert = new Alert(AlertType.INFORMATION);
+                    dialog = alert.getDialogPane();
+                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                    dialog.getStyleClass().add("dialog");
                     alert.setTitle("Information message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successful!");
@@ -1003,6 +1041,9 @@ public class DashboardController implements Initializable{
     public void logout(){
         try{
             Alert alert = new Alert(AlertType.CONFIRMATION);
+            dialog = alert.getDialogPane();
+            dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+            dialog.getStyleClass().add("dialog");
             alert.setTitle("Confirmation Message");
             alert.setHeaderText(null);
             alert.setContentText("Are you sure you want to logout?");
@@ -1091,6 +1132,9 @@ public class DashboardController implements Initializable{
 
             if(username_update.getText().isEmpty() || password_update.getText().isEmpty() || confirm_password_update.getText().isEmpty()){
                 alert = new Alert(AlertType.ERROR);
+                dialog = alert.getDialogPane();
+                dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                dialog.getStyleClass().add("dialog");
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
@@ -1104,6 +1148,9 @@ public class DashboardController implements Initializable{
                 }
                 if(hashedPassword.equals(confHashedPassword)){
                     alert = new Alert(AlertType.CONFIRMATION);
+                    dialog = alert.getDialogPane();
+                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                    dialog.getStyleClass().add("dialog");
                     alert.setTitle("Confirmation Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Are you sure you want to UPDATE admin with username: " + username.getText() + "?");
@@ -1114,6 +1161,9 @@ public class DashboardController implements Initializable{
                         statement.executeUpdate(sql);
 
                         alert = new Alert(AlertType.INFORMATION);
+                        dialog = alert.getDialogPane();
+                        dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                        dialog.getStyleClass().add("dialog");
                         alert.setTitle("Information Message");
                         alert.setHeaderText(null);
                         alert.setContentText("Successful Updated!");
@@ -1123,9 +1173,13 @@ public class DashboardController implements Initializable{
                         availableBooksShowListData();
                         // CLEAR FIELDS
                         availableBooksClear();
+                        logout();
                     }
                 }else{
                     alert = new Alert(AlertType.ERROR);
+                    dialog = alert.getDialogPane();
+                    dialog.getStylesheets().add(String.valueOf(getClass().getResource("styles/alert.css")));
+                    dialog.getStyleClass().add("dialog");
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Password doesn't match");
@@ -1133,7 +1187,7 @@ public class DashboardController implements Initializable{
                 }
             }
         }catch(Exception e){e.printStackTrace();}
-        logout();
+
     }
 
 }
