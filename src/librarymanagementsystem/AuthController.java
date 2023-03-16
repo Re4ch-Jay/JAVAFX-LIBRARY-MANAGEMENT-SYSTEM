@@ -200,7 +200,6 @@ public class AuthController implements Initializable {
 
         signInBtn.getScene().getWindow().hide();
 
-        // LINK YOUR DASHBOARD FORM : )
         Parent root = FXMLLoader.load(getClass().getResource("fxml/signup.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
@@ -225,7 +224,6 @@ public class AuthController implements Initializable {
 
         loginBtn.getScene().getWindow().hide();
 
-        // LINK YOUR DASHBOARD FORM : )
         Parent root = FXMLLoader.load(getClass().getResource("fxml/AuthDesign.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
